@@ -18,14 +18,57 @@
 
         <div class="nav-links" :class="{ hidden: showMobileMenu }">
           <template v-for="link in navLinks" :key="link.id">
+            <!-- Regular link without dropdown -->
             <router-link
-              v-if="!link.disabled"
+              v-if="!link.disabled && !link.dropdown"
               :to="link.path"
               class="nav-link"
               :class="{ active: isLinkActive(link.path) }"
             >
               {{ link.label }}
             </router-link>
+
+            <!-- Link with dropdown (hover) -->
+            <div
+              v-else-if="!link.disabled && link.dropdown"
+              class="nav-link-wrapper"
+              @mouseenter="openMenu(link.id)"
+              @mouseleave="handleMenuLeave"
+            >
+              <span class="nav-link has-dropdown">
+                {{ link.label }}
+                <q-icon
+                  name="mdi-chevron-down"
+                  size="18px"
+                  :class="{ rotated: hoveredMenu === link.id }"
+                />
+              </span>
+              <q-menu
+                :model-value="hoveredMenu === link.id"
+                anchor="bottom left"
+                self="top left"
+                :offset="[0, 8]"
+                @update:model-value="(val) => !val && (hoveredMenu = null)"
+              >
+                <q-list
+                  class="dropdown-menu"
+                  @mouseenter="cancelMenuClose"
+                  @mouseleave="handleMenuLeave"
+                >
+                  <q-item
+                    v-for="item in link.dropdown"
+                    :key="item.path"
+                    clickable
+                    v-close-popup
+                    @click="$router.push(item.path)"
+                  >
+                    <q-item-section>{{ item.label }}</q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </div>
+
+            <!-- Disabled link -->
             <span v-else class="nav-link disabled">
               {{ link.label }}
             </span>
@@ -77,8 +120,9 @@
       <div v-if="rightDrawerOpen" class="mobile-dropdown">
         <div class="mobile-menu-links">
           <template v-for="link in navLinks" :key="link.id">
+            <!-- Regular link without dropdown -->
             <router-link
-              v-if="!link.disabled"
+              v-if="!link.disabled && !link.dropdown"
               :to="link.path"
               class="mobile-nav-link"
               :class="{ active: isLinkActive(link.path) }"
@@ -86,6 +130,42 @@
             >
               {{ link.label }}
             </router-link>
+
+            <!-- Link with dropdown (accordion style) -->
+            <div
+              v-else-if="!link.disabled && link.dropdown"
+              class="mobile-dropdown-wrapper"
+            >
+              <div
+                class="mobile-nav-link has-dropdown"
+                :class="{ 'dropdown-open': expandedMenu === link.id }"
+                @click="toggleMobileDropdown(link.id)"
+              >
+                <span>{{ link.label }}</span>
+                <q-icon
+                  name="mdi-chevron-down"
+                  size="20px"
+                  class="dropdown-chevron"
+                  :class="{ rotated: expandedMenu === link.id }"
+                />
+              </div>
+              <transition name="expand">
+                <div v-if="expandedMenu === link.id" class="mobile-submenu">
+                  <router-link
+                    v-for="item in link.dropdown"
+                    :key="item.path"
+                    :to="item.path"
+                    class="mobile-submenu-link"
+                    @click="handleMobileNavClick"
+                  >
+                    <q-icon name="mdi-circle-small" size="16px" />
+                    {{ item.label }}
+                  </router-link>
+                </div>
+              </transition>
+            </div>
+
+            <!-- Disabled link -->
             <span v-else class="mobile-nav-link disabled">
               {{ link.label }}
             </span>
@@ -186,7 +266,7 @@
               </svg>
               info@lorenafoundation.org
             </a>
-            <a href="tel:+256781126633" class="contact-item">
+            <a href="#" class="contact-item">
               <svg
                 class="contact-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -204,11 +284,7 @@
               </svg>
               Arua, Uganda
             </a>
-            <a
-              href="https://wa.me/256781126633"
-              class="contact-item"
-              target="_blank"
-            >
+            <a href="tel:256781126633" class="contact-item" target="_blank">
               <svg
                 class="contact-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +294,7 @@
                 fill="currentColor"
               >
                 <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
                 />
               </svg>
               +256 762 511 280
@@ -247,33 +323,83 @@ export default {
     const route = useRoute();
     const siteName = "Lorena Foundation";
 
+    const hoveredMenu = ref(null);
+    const menuTimeout = ref(null);
+
+    const openMenu = (linkId) => {
+      // Clear any existing timeout
+      if (menuTimeout.value) {
+        clearTimeout(menuTimeout.value);
+        menuTimeout.value = null;
+      }
+      hoveredMenu.value = linkId;
+    };
+
+    const handleMenuLeave = () => {
+      // Set a timeout to close the menu
+      menuTimeout.value = setTimeout(() => {
+        hoveredMenu.value = null;
+      }, 150);
+    };
+
+    const cancelMenuClose = () => {
+      // Cancel the timeout if mouse enters the menu
+      if (menuTimeout.value) {
+        clearTimeout(menuTimeout.value);
+        menuTimeout.value = null;
+      }
+    };
+
+    const expandedMenu = ref(null);
+
+    const toggleMobileDropdown = (linkId) => {
+      expandedMenu.value = expandedMenu.value === linkId ? null : linkId;
+    };
+
     // Only Portfolio has a real path, others are disabled/placeholder
     const navLinks = [
       { id: "home", label: "Home", path: "/", disabled: false },
-
       {
         id: "campaigns",
         label: "Campaigns",
-        path: "/quotations",
+        path: "#",
         disabled: false,
+        dropdown: [
+          { label: "WASH", path: "/wash" },
+          { label: "Community Health", path: "/community-health" },
+          { label: "Education for All", path: "/education-for-all" },
+          {
+            label: "Equality & Empowerment",
+            path: "/equality-and-empowerment",
+          },
+          { label: "Green Transformation", path: "/green-transformation" },
+          {
+            label: "Livelihood & Economic inclusion",
+            path: "/livelihood-and-economic-inclusion",
+          },
+        ],
       },
       {
         id: "about",
         label: "Who we are",
-        path: "/about",
+        path: "#",
         disabled: false,
+        dropdown: [
+          { label: "Core Values", path: "/core-values" },
+          { label: "Our Team", path: "/our-team" },
+          { label: "Our Story", path: "/our-story" },
+        ],
       },
-      {
-        id: "blog",
-        label: "Blogs",
-        path: "/blog",
-        disabled: false,
-      },
+      { id: "blog", label: "Blogs", path: "/blog", disabled: false },
       {
         id: "get-involved",
         label: "Get involved",
-        path: "/get-involved",
+        path: "#",
         disabled: false,
+        dropdown: [
+          { label: "Volunteer", path: "/our-team" },
+          { label: "Contact Us", path: "/contact-us" },
+        ],
       },
     ];
 
@@ -342,6 +468,7 @@ export default {
 
     const handleMobileNavClick = () => {
       rightDrawerOpen.value = false;
+      expandedMenu.value = null;
     };
 
     onMounted(() => {
@@ -371,6 +498,12 @@ export default {
       handleMobileNavClick,
       isLinkActive,
       currentYear,
+      hoveredMenu,
+      openMenu,
+      handleMenuLeave,
+      cancelMenuClose,
+      expandedMenu,
+      toggleMobileDropdown,
     };
   },
 };
@@ -502,6 +635,128 @@ export default {
   to {
     transform: scaleX(1);
   }
+}
+
+.nav-link-wrapper {
+  position: relative;
+}
+
+.nav-link.has-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  .q-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .q-icon.rotated {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-menu {
+  background: #19aae0;
+  border-radius: 0 0 8px 8px;
+  min-width: 180px;
+  padding: 8px 0;
+
+  .q-item {
+    color: white;
+    padding: 12px 20px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Hide the menu arrow/tail
+::v-deep(.q-menu) {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+.mobile-dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-link {
+  &.has-dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.dropdown-open {
+      background: #f8f9fa;
+      color: #19aae0;
+    }
+  }
+}
+
+.dropdown-chevron {
+  transition: transform 0.3s ease;
+  color: #666;
+
+  &.rotated {
+    transform: rotate(180deg);
+    color: #19aae0;
+  }
+}
+
+.mobile-submenu {
+  background: #fafbfc;
+  border-left: 3px solid #19aae0;
+  margin-left: 12px;
+  overflow: hidden;
+}
+
+.mobile-submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px 12px 32px;
+  color: #555;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #e3f5fc;
+    color: #19aae0;
+  }
+
+  .q-icon {
+    color: #19aae0;
+  }
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+.expand-enter-to,
+.expand-leave-from {
+  max-height: 500px;
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 .cta-btn {
