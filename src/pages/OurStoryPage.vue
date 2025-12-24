@@ -247,7 +247,7 @@ export default {
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 0 0;
   letter-spacing: 0.05em;
   animation: fadeInUp 0.8s ease-out;
 }
@@ -265,7 +265,7 @@ export default {
   text-align: center;
   font-size: 1rem;
   line-height: 1.8;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
   max-width: 1000px;
   color:rgb(71, 85, 105);
   animation: fadeInUp 0.8s ease-out 0.2s backwards;
