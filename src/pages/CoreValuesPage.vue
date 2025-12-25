@@ -249,8 +249,8 @@ const values = [
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(25, 170, 224, 0.5) 0%,
-    rgba(25, 170, 224, 0.6) 100%
+    rgba(25, 170, 224, 0.1) 0%,
+    rgba(25, 170, 224, 0.3) 100%
   );
   z-index: 1;
 }

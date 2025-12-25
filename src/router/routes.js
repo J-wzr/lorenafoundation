@@ -16,7 +16,7 @@ const routes = [
       {
         path: "wash",
         name: "wash",
-        component: () => import("pages/WASHPage.vue"),
+        component: () => import("pages/WashCampaignPage.vue"),
       },
       {
         path: "community-health",

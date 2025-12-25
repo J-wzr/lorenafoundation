@@ -183,11 +183,11 @@ const closeModal = () => {
 // Breadcrumb Section
 .breadcrumb-section {
   position: relative;
-  height: 120px;
+  height: 200px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: #19aae0;
+  background: #0a0a0a8c;
 }
 
 .breadcrumb-bg {
@@ -196,12 +196,12 @@ const closeModal = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/community_health.jpg");
+  background-image: url("/volunteer1.jpg");
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.8;
   transform: scale(1.1);
-  animation: subtle-zoom 20s ease-in-out infinite alternate;
+  animation: subtle-zoom 10s ease-in-out infinite alternate;
   z-index: 0;
 }
 
@@ -212,9 +212,9 @@ const closeModal = () => {
   right: 0;
   bottom: 0;
   background: linear-gradient(
-    135deg,
-    rgba(25, 170, 224, 0.5) 0%,
-    rgba(25, 170, 224, 0.6) 100%
+    to top,
+    rgba(0, 0, 0, 0.196) 0%,
+    rgba(0, 0, 0, 0.343) 100%
   );
   z-index: 1;
 }
@@ -245,7 +245,6 @@ const closeModal = () => {
     transform: translateY(0);
   }
 }
-
 .breadcrumb-nav {
   display: flex;
   align-items: center;
