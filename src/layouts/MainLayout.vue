@@ -230,10 +230,13 @@
         <div class="footer-section">
           <h3 class="footer-heading">About Lorena Foundation</h3>
           <p class="footer-description">
-            Lorena Foundation is dedicated to empowering grassroots communities
-            to improve their livelihoods and welfare through capacity building,
-            skills improvement, knowledge and information development, capital
-            support, and development programs.
+            A local charity that aims at providing safe water and appropriate
+            sanitation solutions, improve community health access, strive to
+            achieve gender equality, improve access to quality education,
+            enhance livelihood and economic inclusion, promote sustainable
+            agriculture, and food security and contributes to inclusive green
+            socio-economic transformation for people in developing countries and
+            disaster areas..
           </p>
         </div>
 
@@ -385,7 +388,7 @@ export default {
         path: "#",
         disabled: false,
         dropdown: [
-          { label: "Core Values", path: "/core-values" },
+          { label: "Mission, Vision & Core Values", path: "/core-values" },
           { label: "Our Team", path: "/our-team" },
           { label: "Our Story", path: "/our-story" },
         ],
