@@ -579,7 +579,6 @@ export default {
 }
 
 .office-card {
-  background: #ffffff;
   border-radius: 24px;
   padding: 3rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -588,6 +587,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-image: url("/big_background_beautiful.png");
 }
 
 .form-card:hover,
@@ -635,11 +635,14 @@ export default {
 }
 
 .card-description {
+  position: relative;
+  padding: 0.8rem;
   font-size: 1rem;
-  color: #64748b;
+  color: #121416;
   line-height: 1.7;
   text-align: center;
   margin: 0 0 2rem 0;
+  background-image: url("/big_bg_home.png");
 }
 
 .email-link {
@@ -781,7 +784,6 @@ export default {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .office-icon {
@@ -815,21 +817,22 @@ export default {
   font-size: 1.1rem;
   font-weight: 700;
   color: #19aae0;
-  margin: 0 0 1rem 0;
 }
 
 .office-description {
   font-size: 0.95rem;
-  color: #64748b;
+  color: #3d434b;
   line-height: 1.8;
   margin: 0 0 2rem 0;
+  background-image: url("/big_bg_home.png");
+  padding: 0.8rem;
 }
 
 .map-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 1.8rem;
+  margin-top: 0.7rem;
   border-top: 2px solid #f1f5f9;
   min-height: 0;
 }
