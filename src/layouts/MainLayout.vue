@@ -400,7 +400,7 @@ export default {
         path: "#",
         disabled: false,
         dropdown: [
-          { label: "Volunteer", path: "/our-team" },
+          { label: "Volunteer", path: "/volunteer" },
           { label: "Contact Us", path: "/contact-us" },
         ],
       },
