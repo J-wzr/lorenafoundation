@@ -410,7 +410,7 @@ export default {
       label: "Donate",
       icon: "mdi-heart",
       color: "red-7",
-      path: "/contact",
+      path: "#",
       disabled: false,
       iconSize: "12px",
     };
