@@ -210,11 +210,20 @@
 import { ref } from "vue";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "src/boot/firebase";
-import { Notify } from "quasar";
+import { Notify, useMeta } from "quasar";
 
 export default {
   name: "ContactPage",
   setup() {
+    useMeta({
+      title: "Contact Us - Lorena Foundation",
+      meta: {
+        description: { name: "description", content: "Get in touch with Lorena Foundation. Reach out for partnerships, donations, volunteering or any inquiries about our programs." },
+        ogTitle: { property: "og:title", content: "Contact Us - Lorena Foundation" },
+        ogDescription: { property: "og:description", content: "Get in touch with Lorena Foundation for partnerships, donations or inquiries." },
+      },
+    });
+
     const submitted = ref(false);
     const loading = ref(false);
     const formData = ref({

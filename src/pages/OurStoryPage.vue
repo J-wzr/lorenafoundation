@@ -15,54 +15,77 @@
       </div>
     </section>
 
-    <!-- About Us Section -->
-    <section class="about-section">
+    <!-- Our Story Section -->
+    <section class="story-section">
       <div class="container">
-        <h1 class="about-title">About Us</h1>
-        <p class="about-description">
-          <strong>Lorena foundation</strong> is a local charity that aims at
-          providing safe water and appropriate sanitation solutions, improve
-          community health access, strive to achieve gender equality, improve
-          access to quality education, enhance livelihood and economic
-          inclusion, promote sustainable agriculture, and food security and
-          contributes to inclusive green socio-economic transformation for
-          people in developing countries and disaster areas.
-        </p>
-
-        <div class="about-images">
-          <div class="image-card">
-            <img src="/kids_running.jpg" alt="Children in community" />
-          </div>
-          <div class="image-card">
-            <img
-              src="/doctor_patient.jpg"
-              alt="Healthcare worker with patient"
-            />
-          </div>
-          <div class="image-card">
-            <img src="/spinach.jpg" alt="Agricultural work" />
-          </div>
+        <div class="board-header">
+          <div class="board-divider"></div>
+          <h2 class="section-title board-title">Our Story</h2>
+          <div class="board-divider"></div>
         </div>
 
-        <h2 class="together-title">Together, We Can Do Something</h2>
+        <div class="story-layout">
+          <div class="story-image-container">
+            <div class="image-card">
+              <img src="/Lorena_Darnell.png" alt="Lorena Darnell - Founder" />
+            </div>
+          </div>
+
+          <div class="story-text-content">
+            <p class="story-paragraph">
+              When our founder met Lorena Darnell, it was in the city of
+              Baghdad, Iraq, during her overseas mission work. That divine
+              encounter became the beginning of many beautiful stories, most
+              profoundly, the transformation of his own life. He journeyed from
+              the depths of failure and self-pity into a victorious life in
+              Christ.
+            </p>
+
+            <p class="story-paragraph">
+              This encounter ignited a return to school and set in motion a
+              ripple effect of change that continues to touch the communities we
+              serve today.
+            </p>
+
+            <p class="story-paragraph">
+              The organization is named in honor of Lorena Darnell, a woman who
+              has lived a life marked by dignity, compassion, and love.
+              Throughout her life, she has faithfully cared for the needy and
+              supported countless individuals in discovering their purpose
+              through education. A devout believer in the Lord, Lorena has lit a
+              light that shines in dark places, one that continues to illuminate
+              the paths of many, long after the moment of encounter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Serve Section -->
+    <section class="serve-section">
+      <div class="container">
+        <div class="board-header">
+          <div class="board-divider"></div>
+          <h2 class="section-title board-title">How We Serve</h2>
+          <div class="board-divider"></div>
+        </div>
         <p class="about-description">
-          Since Lorena Foundation was established, we have been pursuing one
-          ambitious goal: building healthy, inclusive, and sustainable
-          communities. The challenges of safe water, poor sanitation, hunger,
-          and inequality are immense — but we remain hopeful. We know the
-          solutions, and every day we make progress through strong partnerships
-          and the generosity of people like you. By working hand in hand, we
-          believe every child, woman, and man can gain access to safe water,
-          quality education, better health, sustainable livelihoods, and a
-          brighter future within our lifetime.
+          At Lorena Foundation, we serve by implementing practical, long-term
+          solutions that address the most pressing needs of communities. Our
+          work is designed to uplift individuals, strengthen families, and
+          create thriving, resilient communities.
         </p>
       </div>
     </section>
 
     <!-- Impact in Numbers Section -->
-    <section class="impact-section">
+    <section class="impact-section" ref="impactSection">
       <div class="container">
-        <h2 class="impact-title">Impact in Numbers</h2>
+        <div class="board-header" style="padding-top: 3rem">
+          <div class="board-divider"></div>
+          <h2 class="section-title board-title">Impact in Numbers</h2>
+          <div class="board-divider"></div>
+        </div>
 
         <div class="impact-stats">
           <div class="impact-item">
@@ -81,7 +104,9 @@
             </div>
             <div class="impact-content">
               <div class="impact-label">IMPACTED OVER</div>
-              <div class="impact-value">30,000 People</div>
+              <div class="impact-value">
+                {{ animatedPeople.toLocaleString() }} People
+              </div>
             </div>
           </div>
 
@@ -101,7 +126,9 @@
             </div>
             <div class="impact-content">
               <div class="impact-label">OVER</div>
-              <div class="impact-value">4 Districts covered</div>
+              <div class="impact-value">
+                {{ animatedDistricts }} Districts covered
+              </div>
             </div>
           </div>
 
@@ -121,7 +148,9 @@
             </div>
             <div class="impact-content">
               <div class="impact-label">HELPING OVER</div>
-              <div class="impact-value">6,000 House Holds</div>
+              <div class="impact-value">
+                {{ animatedHouseholds.toLocaleString() }} House Holds
+              </div>
             </div>
           </div>
         </div>
@@ -133,7 +162,7 @@
       <div class="container">
         <div class="cta-content">
           <div class="cta-text">
-            <h2 class="cta-title">Ready to change a life?</h2>
+            <h2 class="cta-title">Ready to transform a life?</h2>
             <p class="cta-description">
               Every 10$ – $50 can end poverty or change a life of the
               unfortunate kids, poor single mothers and more
@@ -154,7 +183,64 @@
 
 <script>
 export default {
-  // name: 'PageName',
+  meta: {
+    title: "Our Story - Lorena Foundation",
+    meta: {
+      description: { name: "description", content: "Learn about the story behind Lorena Foundation - our journey, impact and commitment to transforming lives in communities." },
+      ogTitle: { property: "og:title", content: "Our Story - Lorena Foundation" },
+      ogDescription: { property: "og:description", content: "The journey, impact and commitment behind Lorena Foundation." },
+    },
+  },
+
+  data() {
+    return {
+      animatedPeople: 0,
+      animatedDistricts: 0,
+      animatedHouseholds: 0,
+      hasAnimated: false,
+    };
+  },
+  mounted() {
+    this.observeImpactSection();
+  },
+  methods: {
+    observeImpactSection() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !this.hasAnimated) {
+              this.hasAnimated = true;
+              this.animateCounters();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      if (this.$refs.impactSection) {
+        observer.observe(this.$refs.impactSection);
+      }
+    },
+    animateCounters() {
+      this.animateValue("animatedPeople", 0, 5000, 400);
+      this.animateValue("animatedDistricts", 0, 4, 1500);
+      this.animateValue("animatedHouseholds", 0, 1000, 1000);
+    },
+    animateValue(key, start, end, duration) {
+      const startTime = performance.now();
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        this[key] = Math.floor(easeOutQuart * (end - start) + start);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      requestAnimationFrame(animate);
+    },
+  },
 };
 </script>
 
@@ -268,51 +354,58 @@ export default {
   padding: 0 2rem;
 }
 
-// About Section
-.about-section {
-  // background: #1e5a6d;
-  padding: 3rem 0;
-  // color: #ffffff;
+// Section Title with Dividers (copied from team page)
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  letter-spacing: -0.01em;
 }
 
-.about-title {
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 0 0 0 0;
-  letter-spacing: 0.05em;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.together-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 4rem 0 2rem 0;
-  letter-spacing: 0.05em;
-}
-
-.about-description {
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.8;
-  margin: 0 auto 2rem;
-  max-width: 1000px;
-  color: rgb(71, 85, 105);
-  animation: fadeInUp 0.8s ease-out 0.2s backwards;
-
-  strong {
-    font-weight: 600;
-    // color: #ffffff;
-  }
-}
-
-.about-images {
+.board-header {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
-  margin-top: 3rem;
-  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.board-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(203, 213, 225, 0.6),
+    transparent
+  );
+  max-width: 200px;
+}
+
+.board-title {
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.35rem;
+}
+
+// Story Section
+.story-section {
+  padding: 2.5rem 0 1.5rem;
+  background: #ffffff;
+}
+
+.story-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.story-image-container {
+  flex: 0 0 350px;
 }
 
 .image-card {
@@ -321,8 +414,6 @@ export default {
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex: 1;
-  max-width: 380px;
 
   &:hover {
     transform: translateY(-8px);
@@ -342,6 +433,37 @@ export default {
   }
 }
 
+.story-text-content {
+  flex: 1;
+}
+
+.story-paragraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgb(71, 85, 105);
+  margin: 0 0 1rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// How We Serve Section
+.serve-section {
+  padding: 1.5rem 0 1.5rem;
+  background: #f8fafc;
+}
+
+.about-description {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 1000px;
+  color: rgb(71, 85, 105);
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -356,21 +478,12 @@ export default {
 // Impact Section
 .impact-section {
   background: #f5f5f5;
-  padding: 3rem 0;
+  padding: 1.5rem 0 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.impact-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 0 0 4rem 0;
-  letter-spacing: 0.03em;
-  animation: fadeInUp 0.8s ease-out;
 }
 
 .impact-stats {
@@ -379,13 +492,18 @@ export default {
   gap: 4rem;
   max-width: 900px;
   margin: 0 auto;
+  align-items: center;
+  width: 100%;
 }
 
 .impact-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   animation: fadeInUp 0.8s ease-out backwards;
+  width: 100%;
+  max-width: 700px;
 
   &:nth-child(1) {
     animation-delay: 0.2s;
@@ -451,6 +569,7 @@ export default {
 
 .impact-content {
   flex: 1;
+  text-align: left;
 }
 
 .impact-label {
@@ -571,13 +690,14 @@ export default {
 
 // Responsive adjustments
 @media (max-width: 968px) {
-  .about-images {
+  .story-layout {
     flex-direction: column;
     align-items: center;
   }
 
-  .image-card {
-    max-width: 100%;
+  .story-image-container {
+    flex: 0 0 auto;
+    max-width: 400px;
     width: 100%;
   }
 
@@ -591,30 +711,36 @@ export default {
     text-align: center;
   }
 
+  .impact-content {
+    text-align: center;
+  }
+
   .impact-arrow {
     display: none;
+  }
+
+  .board-divider {
+    max-width: 80px;
+  }
+
+  .board-title {
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .about-title {
-    font-size: 2.5rem;
-  }
-
-  .about-description {
+  .about-description,
+  .story-paragraph {
     font-size: 1rem;
   }
 
-  .about-section {
-    padding: 3rem 0;
+  .story-section,
+  .serve-section {
+    padding: 2rem 0 2rem;
   }
 
   .container {
     padding: 0 1.5rem;
-  }
-
-  .impact-title {
-    font-size: 2rem;
   }
 
   .impact-value {
@@ -647,6 +773,14 @@ export default {
   .cta-button {
     padding: 1rem 1.5rem;
     font-size: 1rem;
+  }
+
+  .board-divider {
+    max-width: 60px;
+  }
+
+  .board-title {
+    font-size: 1.2rem;
   }
 }
 </style>

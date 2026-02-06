@@ -68,11 +68,6 @@ const routes = [
         name: "contact",
         component: () => import("pages/ContactUsPage.vue"),
       },
-      {
-        path: "blog",
-        name: "blogs",
-        component: () => import("pages/ContactUsPage.vue"),
-      },
     ],
   },
 

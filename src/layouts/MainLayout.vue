@@ -11,7 +11,7 @@
     <q-header class="header-container">
       <q-toolbar class="navbar-content">
         <router-link to="/" class="logo-link">
-          <img src="icons/lorena_foundation_logo5.png" class="logo-image" />
+          <img src="icons/lorena_foundation_logo6.png" class="logo-image" />
         </router-link>
 
         <q-space />
@@ -23,7 +23,7 @@
               v-if="!link.disabled && !link.dropdown"
               :to="link.path"
               class="nav-link"
-              :class="{ active: isLinkActive(link.path) }"
+              :class="{ active: isLinkActive(link.path, link) }"
             >
               {{ link.label }}
             </router-link>
@@ -40,7 +40,10 @@
                 <q-icon
                   name="mdi-chevron-down"
                   size="18px"
-                  :class="{ rotated: hoveredMenu === link.id }"
+                  :class="{
+                    rotated: hoveredMenu === link.id,
+                    'active-chevron': isLinkActive(link.path, link),
+                  }"
                 />
               </span>
               <q-menu
@@ -60,6 +63,9 @@
                     :key="item.path"
                     clickable
                     v-close-popup
+                    :class="{
+                      'active-dropdown-item': route.path === item.path,
+                    }"
                     @click="$router.push(item.path)"
                   >
                     <q-item-section>{{ item.label }}</q-item-section>
@@ -125,7 +131,7 @@
               v-if="!link.disabled && !link.dropdown"
               :to="link.path"
               class="mobile-nav-link"
-              :class="{ active: isLinkActive(link.path) }"
+              :class="{ active: isLinkActive(link.path, link) }"
               @click="handleMobileNavClick"
             >
               {{ link.label }}
@@ -146,7 +152,10 @@
                   name="mdi-chevron-down"
                   size="20px"
                   class="dropdown-chevron"
-                  :class="{ rotated: expandedMenu === link.id }"
+                  :class="{
+                    rotated: expandedMenu === link.id,
+                    'active-chevron': isLinkActive(link.path, link),
+                  }"
                 />
               </div>
               <transition name="expand">
@@ -156,6 +165,7 @@
                     :key="item.path"
                     :to="item.path"
                     class="mobile-submenu-link"
+                    :class="{ 'active-submenu-link': route.path === item.path }"
                     @click="handleMobileNavClick"
                   >
                     <q-icon name="mdi-circle-small" size="16px" />
@@ -207,7 +217,7 @@
     <transition name="fade">
       <div v-if="showFloatingButtons" class="floating-buttons">
         <a
-          href="https://wa.me/256762511280"
+          href="https://wa.me/256723456789"
           target="_blank"
           class="floating-btn whatsapp-floating"
           title="Chat on WhatsApp"
@@ -230,21 +240,27 @@
         <div class="footer-section">
           <h3 class="footer-heading">About Lorena Foundation</h3>
           <p class="footer-description">
-            A local charity that aims at providing safe water and appropriate
-            sanitation solutions, improve community health access, strive to
-            achieve gender equality, improve access to quality education,
-            enhance livelihood and economic inclusion, promote sustainable
-            agriculture, and food security and contributes to inclusive green
-            socio-economic transformation for people in developing countries and
-            disaster areas..
+            Lorena foundation is a local charity that aims at providing safe
+            water and appropriate sanitation solutions, improve community health
+            access, strive to achieve gender equality, improve access to quality
+            education, enhance livelihood and economic inclusion, promote
+            sustainable agriculture, and food security and contributes to
+            inclusive green socio-economic transformation for people in
+            developing countries and disaster areas.
           </p>
         </div>
 
         <div class="footer-section">
           <h3 class="footer-heading">Quick Links</h3>
           <div class="footer-links">
-            <a href="#home" class="footer-link">Home</a>
-            <a href="#campaigns" class="footer-link">Campaigns</a>
+            <a href="core-values" class="footer-link"
+              >Mission, Vision and Values</a
+            >
+            <a href="our-team" class="footer-link">Meet our Team</a>
+            <a href="our-story" class="footer-link">Read our Story</a>
+            <a href="campaigns" class="footer-link">About PARADOSI</a>
+            <a href="volunteer" class="footer-link">Become a Volunteer</a>
+            <a href="contact" class="footer-link">Send an Inquiry</a>
           </div>
         </div>
 
@@ -300,7 +316,7 @@
                   d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
                 />
               </svg>
-              +256 762 511 280
+              +256 712 345679
             </a>
           </div>
         </div>
@@ -364,7 +380,7 @@ export default {
       { id: "home", label: "Home", path: "/", disabled: false },
       {
         id: "campaigns",
-        label: "Campaigns",
+        label: "Our Programs",
         path: "#",
         disabled: false,
         dropdown: [
@@ -384,7 +400,7 @@ export default {
       },
       {
         id: "about",
-        label: "Who we are",
+        label: "About Us",
         path: "#",
         disabled: false,
         dropdown: [
@@ -393,7 +409,7 @@ export default {
           { label: "Our Story", path: "/our-story" },
         ],
       },
-      { id: "blog", label: "Blogs", path: "/blog", disabled: false },
+      //     { id: "blog", label: "Blogs", path: "/blog", disabled: false },
       {
         id: "get-involved",
         label: "Get involved",
@@ -402,6 +418,7 @@ export default {
         dropdown: [
           { label: "Volunteer", path: "/volunteer" },
           { label: "Contact Us", path: "/contact-us" },
+          { label: "Our Campaigns", path: "/campaigns" },
         ],
       },
     ];
@@ -464,9 +481,18 @@ export default {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const isLinkActive = (linkPath) => {
+    const isLinkActive = (linkPath, link) => {
       if (!linkPath) return false;
-      return route.path === linkPath;
+
+      // Check if current route matches the link path
+      if (route.path === linkPath) return true;
+
+      // If link has dropdown, check if current route matches any dropdown item
+      if (link && link.dropdown) {
+        return link.dropdown.some((item) => route.path === item.path);
+      }
+
+      return false;
     };
 
     const handleMobileNavClick = () => {
@@ -507,6 +533,7 @@ export default {
       cancelMenuClose,
       expandedMenu,
       toggleMobileDropdown,
+      route,
     };
   },
 };
@@ -657,6 +684,10 @@ export default {
   .q-icon.rotated {
     transform: rotate(180deg);
   }
+
+  .q-icon.active-chevron {
+    color: #e53935;
+  }
 }
 
 .dropdown-menu {
@@ -672,6 +703,11 @@ export default {
 
     &:hover {
       background: rgba(255, 255, 255, 0.2);
+    }
+
+    &.active-dropdown-item {
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: 600;
     }
   }
 }
@@ -692,6 +728,35 @@ export default {
 }
 
 .mobile-nav-link {
+  display: block;
+  padding: 14px 24px;
+  text-decoration: none;
+  color: #5a6c7d;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+  margin: 2px 12px;
+  position: relative;
+
+  &:hover {
+    background: rgba(10, 58, 92, 0.06);
+    color: #0a3a5c;
+    transform: translateX(4px);
+  }
+
+  &.active {
+    background: rgba(230, 126, 34, 0.1);
+    color: #0a3a5c;
+    font-weight: 600;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
   &.has-dropdown {
     cursor: pointer;
     display: flex;
@@ -712,6 +777,10 @@ export default {
   &.rotated {
     transform: rotate(180deg);
     color: #19aae0;
+  }
+
+  &.active-chevron {
+    color: #e53935;
   }
 }
 
@@ -739,6 +808,12 @@ export default {
 
   .q-icon {
     color: #19aae0;
+  }
+
+  &.active-submenu-link {
+    background: rgba(230, 126, 34, 0.1);
+    color: #0a3a5c;
+    font-weight: 600;
   }
 }
 
@@ -826,38 +901,6 @@ export default {
 
 .mobile-menu-links {
   padding: 16px 0;
-}
-
-.mobile-nav-link {
-  display: block;
-  padding: 14px 24px;
-  text-decoration: none;
-  color: #5a6c7d;
-  font-size: 15.5px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.5;
-  transition: all 0.25s ease;
-  border-radius: 8px;
-  margin: 2px 12px;
-  position: relative;
-
-  &:hover {
-    background: rgba(10, 58, 92, 0.06);
-    color: #0a3a5c;
-    transform: translateX(4px);
-  }
-
-  &.active {
-    background: rgba(230, 126, 34, 0.1);
-    color: #0a3a5c;
-    font-weight: 600;
-    border-left: 3px solid #e53935;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
 }
 
 .mobile-cta {

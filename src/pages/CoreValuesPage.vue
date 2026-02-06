@@ -20,13 +20,11 @@
       <div class="container">
         <div class="content-grid mission-grid">
           <div class="text-content">
-            <span class="section-label">Our Purpose</span>
             <h2 class="section-title">Our Mission</h2>
             <p class="section-text">
-              To empower grassroots communities to improve their livelihoods and
-              welfare through capacity building, skills improvement, knowledge
-              and information development, capital support, and development
-              programs.
+              Guided by God, we empower grassroots communities to build better
+              lives through skills, knowledge, and sustainable development
+              support.
             </p>
             <div class="mission-points">
               <div
@@ -44,7 +42,7 @@
           <div class="image-content">
             <div class="image-frame">
               <img
-                src="/community_health.jpg"
+                src="/side-view-senior-black-woman-posing-mission-option.jpg"
                 alt="Community Health"
                 class="content-image"
               />
@@ -63,11 +61,9 @@
       <div class="container">
         <div class="content-grid">
           <div class="text-content">
-            <span class="section-label vision-label">Our Future</span>
             <h2 class="section-title">Our Vision</h2>
             <p class="section-text vision-text">
-              To create a strong, vibrant, inclusive, and sustainable community
-              contributing to a prosperous, equitable, and stable society.
+              God-centered communities transforming lives and restoring hope.
             </p>
             <div class="vision-tags">
               <span
@@ -82,7 +78,7 @@
           <div class="image-content">
             <div class="image-frame">
               <img
-                src="/our_vision.jpg"
+                src="/young-african-children-outdoor-vision.jpg"
                 alt="Our Vision"
                 class="content-image"
               />
@@ -102,15 +98,18 @@
           <div class="image-content">
             <div class="image-frame">
               <img
-                src="/our_values.jpg"
+                src="/portrait-little-boy-outdoor-vision.jpg"
                 alt="Our Values"
                 class="content-image"
               />
             </div>
           </div>
           <div class="text-content">
-            <span class="section-label">Our Foundation</span>
             <h2 class="section-title">Our Values</h2>
+            <p class="values-subtitle">
+              <q-icon name="menu_book" size="18px" class="bible-icon" />
+              Hover to read • Click to view full scripture
+            </p>
 
             <div class="values-list">
               <div
@@ -121,7 +120,56 @@
                 <div class="value-number">{{ index + 1 }}</div>
                 <div class="value-content">
                   <h3 class="value-title">{{ value.title }}</h3>
-                  <p class="value-description">{{ value.description }}</p>
+                  <div class="scripture-references">
+                    <div
+                      v-for="(scripture, sIndex) in value.scriptures"
+                      :key="sIndex"
+                      class="scripture-chip"
+                    >
+                      <q-btn
+                        flat
+                        dense
+                        no-caps
+                        class="scripture-btn"
+                        @click="openScripture(scripture.url)"
+                      >
+                        <q-icon
+                          name="auto_stories"
+                          size="14px"
+                          class="book-icon"
+                        />
+                        <span class="scripture-text">{{
+                          scripture.reference
+                        }}</span>
+                        <q-icon
+                          name="open_in_new"
+                          size="12px"
+                          class="external-icon"
+                        />
+
+                        <q-tooltip
+                          anchor="top middle"
+                          self="bottom middle"
+                          :offset="[0, 8]"
+                          class="scripture-tooltip"
+                          max-width="350px"
+                        >
+                          <div class="tooltip-content">
+                            <div class="tooltip-ref">
+                              {{ scripture.reference }} ({{
+                                scripture.version
+                              }})
+                            </div>
+                            <div class="tooltip-text">{{ scripture.text }}</div>
+                            <div class="tooltip-action">
+                              <q-icon name="touch_app" size="14px" />
+                              Click to read full scripture on BibleGateway
+                            </div>
+                          </div>
+                        </q-tooltip>
+                      </q-btn>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -154,6 +202,16 @@
 
 <script setup>
 import { ref } from "vue";
+import { useMeta } from "quasar";
+
+useMeta({
+  title: "Mission, Vision & Values - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Discover Lorena Foundation's mission, vision and core values driving community transformation through education, health and empowerment." },
+    ogTitle: { property: "og:title", content: "Mission, Vision & Values - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Our mission, vision and core values driving community transformation." },
+  },
+});
 
 const missionPoints = [
   { icon: "groups", text: "Capacity Building" },
@@ -168,42 +226,65 @@ const visionKeywords = [
   "Inclusive",
   "Sustainable",
   "Prosperous",
-  "Equitable",
-  "Stable",
 ];
 
 const values = [
   {
-    title: "Equity & Inclusion",
-    description:
-      "We believe in fairness, gender equality, and opportunities for all.",
-  },
-  {
-    title: "Sustainability",
-    description:
-      "We promote long-term solutions that protect people and the environment.",
-  },
-  {
-    title: "Community Empowerment",
-    description:
-      "We strengthen grassroots communities to be agents of their own change.",
-  },
-  {
-    title: "Transparency & Accountability",
-    description:
-      "We uphold integrity and responsible stewardship of resources.",
+    title: "Love",
+    scriptures: [
+      {
+        reference: "Mark 12:29-31",
+        text: "Jesus answered, 'The first of all the commandments is: Hear, O Israel, the LORD our God, the LORD is one. And you shall love the LORD your God with all your heart, with all your soul, with all your mind, and with all your strength. This is the first commandment. And the second, like it, is this: You shall love your neighbor as yourself. There is no other commandment greater than these.'",
+        version: "ESV",
+        url: "https://www.biblegateway.com/passage/?search=Mark+12%3A29-31&version=ESV",
+      },
+      {
+        reference: "1 Corinthians 13:4-7",
+        text: "Love never gives up. Love cares more for others than for self. Love doesn't want what it doesn't have. Love doesn't strut, doesn't have a swelled head, doesn't force itself on others, isn't always 'me first,' doesn't fly off the handle, doesn't keep score of the sins of others, doesn't revel when others grovel, takes pleasure in the flowering of truth, puts up with anything, trusts God always, always looks for the best, never looks back, but keeps going to the end.",
+        version: "MSG",
+        url: "https://www.biblegateway.com/passage/?search=1+Corinthians+13%3A4-7&version=MSG",
+      },
+    ],
   },
   {
     title: "Collaboration",
-    description:
-      "We partner with communities, stakeholders, and supporters for greater impact.",
+    scriptures: [
+      {
+        reference: "Ecclesiastes 4:9-10",
+        text: "Two are better than one; because they have a good reward for their labour. For if they fall, the one will lift up his fellow: but woe to him that is alone when he falleth; for he hath not another to help him up.",
+        version: "KJV",
+        url: "https://www.biblegateway.com/passage/?search=Ecclesiastes+4%3A9-10&version=KJV",
+      },
+      {
+        reference: "1 Corinthians 12:14",
+        text: "For the body is not one member, but many.",
+        version: "KJV",
+        url: "https://www.biblegateway.com/passage/?search=1+Corinthians+12%3A14&version=KJV",
+      },
+    ],
   },
   {
-    title: "Innovation",
-    description:
-      "We embrace new approaches to address evolving challenges effectively.",
+    title: "Empowerment",
+    scriptures: [
+      {
+        reference: "2 Timothy 1:7",
+        text: "For God gave us a spirit not of fear but of power and love and self-control.",
+        version: "ESV",
+        url: "https://www.biblegateway.com/passage/?search=2+Timothy+1%3A7&version=ESV",
+      },
+      {
+        reference: "Philippians 4:13",
+        text: "I can do all things through Christ which strengtheneth me.",
+        version: "KJV",
+        url: "https://www.biblegateway.com/passage/?search=Philippians+4%3A13&version=KJV",
+      },
+    ],
   },
 ];
+
+const openScripture = (url) => {
+  window.open(url, "_blank");
+};
 </script>
 
 <style scoped lang="scss">
@@ -232,7 +313,7 @@ const values = [
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/community_health.jpg");
+  background-image: url("/young-african-children-outdoor-vision.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.5;
@@ -352,33 +433,32 @@ const values = [
   }
 }
 
-// Section Labels and Titles
-.section-label {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #19aae0;
-  margin-bottom: 0.75rem;
-  padding: 0.3rem 0.8rem;
-  background: rgba(25, 170, 224, 0.1);
-  border-radius: 20px;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.vision-label {
-  color: #19aae0;
-  background: rgba(25, 170, 224, 0.1);
-}
-
 .section-title {
   font-size: 1.85rem;
   font-weight: 700;
   color: #1e293b;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.3;
   animation: fadeInUp 0.8s ease-out;
+}
+
+.values-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-style: italic;
+  animation: fadeInUp 0.9s ease-out;
+
+  .bible-icon {
+    color: #19aae0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 }
 
 .section-text {
@@ -388,12 +468,6 @@ const values = [
   margin-bottom: 1.5rem;
   text-align: justify;
   animation: fadeInUp 1s ease-out;
-}
-
-.vision-text {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #334155;
 }
 
 // Mission Points
@@ -614,7 +688,7 @@ const values = [
   font-size: 0.95rem;
   font-weight: 600;
   color: #1e293b;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.3;
   transition: color 0.3s ease;
 
@@ -623,11 +697,102 @@ const values = [
   }
 }
 
-.value-description {
+// Scripture References
+.scripture-references {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.scripture-chip {
+  display: inline-block;
+}
+
+.scripture-btn {
+  padding: 0.4rem 0.75rem;
+  background: rgba(25, 170, 224, 0.08);
+  color: #19aae0;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(25, 170, 224, 0.2);
+  transition: all 0.3s ease;
+  min-height: auto;
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &:hover {
+    background: rgba(25, 170, 224, 0.15);
+    border-color: rgba(25, 170, 224, 0.4);
+    transform: translateY(-2px);
+
+    .external-icon {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .book-icon {
+    color: #19aae0;
+    opacity: 0.8;
+  }
+
+  .scripture-text {
+    font-weight: 500;
+  }
+
+  .external-icon {
+    color: #19aae0;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+  }
+
+  :deep(.q-btn__content) {
+    gap: 0.4rem;
+  }
+}
+
+// Tooltip Styles
+.scripture-tooltip {
+  background: #1e293b;
+  padding: 0.85rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-content {
+  text-align: left;
+}
+
+.tooltip-ref {
+  font-weight: 600;
+  color: #19aae0;
+  margin-bottom: 0.5rem;
   font-size: 0.85rem;
-  line-height: 1.45;
-  color: #64748b;
-  margin: 0;
+}
+
+.tooltip-text {
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.tooltip-action {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-style: italic;
+
+  .q-icon {
+    color: #19aae0;
+  }
 }
 
 // CTA Section
@@ -827,7 +992,6 @@ const values = [
   left: 5%;
   animation: float-slow 28s ease-in-out infinite reverse;
 }
-
 .circle-6 {
   width: 400px;
   height: 400px;
@@ -840,7 +1004,6 @@ const values = [
   left: -80px;
   animation: float-medium 24s ease-in-out infinite;
 }
-
 .circle-7 {
   width: 350px;
   height: 350px;
@@ -853,7 +1016,6 @@ const values = [
   right: 10%;
   animation: float-slow 26s ease-in-out infinite reverse;
 }
-
 @keyframes float-slow {
   0%,
   100% {
@@ -869,7 +1031,6 @@ const values = [
     transform: translate(-40px, 20px) scale(1.02);
   }
 }
-
 @keyframes float-medium {
   0%,
   100% {
@@ -882,25 +1043,20 @@ const values = [
     transform: translate(-30px, 30px) rotate(-5deg);
   }
 }
-
 // Mobile Responsive
 @media (max-width: 768px) {
   .breadcrumb-section {
     height: 140px;
   }
-
   .content-section {
     padding: 2.5rem 0;
   }
-
   .container {
     padding: 0 1.5rem;
   }
-
   .content-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
-
     &.mission-grid {
       .image-content {
         order: 1;
@@ -913,57 +1069,58 @@ const values = [
       }
     }
   }
-
   .section-title {
     font-size: 1.65rem;
   }
-
   .section-text {
     font-size: 0.95rem;
   }
-
   .image-frame {
     height: 280px;
   }
-
   .mission-points {
     grid-template-columns: 1fr;
   }
-
   .bg-circle {
     display: none;
   }
-
   .value-item {
     gap: 1rem;
   }
-
   .value-number {
     width: 38px;
     height: 38px;
     font-size: 1rem;
   }
-
   .value-title {
     font-size: 0.95rem;
   }
-
-  .value-description {
-    font-size: 0.85rem;
+  .scripture-references {
+    gap: 0.4rem;
   }
+  .scripture-btn {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    .book-icon {
+      font-size: 12px;
+    }
 
+    .external-icon {
+      font-size: 11px;
+    }
+  }
+  .values-subtitle {
+    display: none; // Hide on mobile since clicking goes directly to Bible
+  }
   .cta-section {
     padding: 3rem 0;
   }
-
   .cta-title {
     font-size: 1.5rem;
   }
-
   .cta-text {
     font-size: 0.95rem;
   }
-
   .cta-button {
     padding: 0.8rem 1.75rem;
     font-size: 0.9rem;

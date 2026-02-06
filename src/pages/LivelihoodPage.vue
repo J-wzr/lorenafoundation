@@ -170,7 +170,7 @@
               <p class="quote">
                 “Alone we can do so little; together we can do so much.”
                 <br />
-                <span class="quote-author">— Helen Keller</span>
+                <span class="quote-author"> Helen Keller</span>
               </p>
 
               <p class="headline" style="text-align: justify">
@@ -191,7 +191,7 @@
                 Livelihoods & Economic Inclusion programs empower individuals
                 with vocational training and practical skills, mentorship,
                 startup capital, access to markets, savings groups,
-                cooperatives, and microfinance—especially for women and youth.
+                cooperatives, and microfinance especially for women and youth.
               </p>
 
               <div class="callout" style="text-align: justify">
@@ -200,7 +200,7 @@
                 </p>
                 <p>
                   We create pathways to dignified, self-reliant futures. When
-                  people are given a fair chance, they don’t just survive—they
+                  people are given a fair chance, they don’t just survive they
                   thrive.
                 </p>
               </div>
@@ -208,12 +208,12 @@
               <p class="additional-quotes" style="text-align: justify">
                 <em
                   >“Overcoming poverty is not a gesture of charity. It is an act
-                  of justice.” — Nelson Mandela</em
+                  of justice.” Nelson Mandela</em
                 ><br />
                 <em
                   >“As you grow older, you will discover that you have two
                   hands, one for helping yourself, the other for helping
-                  others.” — Audrey Hepburn</em
+                  others.” Audrey Hepburn</em
                 >
               </p>
             </div>
@@ -248,10 +248,11 @@
               <div class="preview-image"></div>
               <div class="preview-content">
                 <div class="preview-badge">Coming Next</div>
-                <h3 class="preview-title">Community Health</h3>
+                <h3 class="preview-title">
+                  WASH Program (Water, Sanitation & Health)
+                </h3>
                 <p class="preview-text">
-                  Empowering children through quality education and learning
-                  resources.
+                  Give Water. Give Life. Transform a Future.
                 </p>
               </div>
             </div>
@@ -264,7 +265,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "Livelihood & Economic Inclusion - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Lorena Foundation supports livelihood development and economic inclusion through skills training and entrepreneurship programs." },
+    ogTitle: { property: "og:title", content: "Livelihood & Economic Inclusion - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Supporting livelihood development and economic inclusion through skills training." },
+  },
+});
 
 const {
   campaign,
@@ -701,7 +712,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }

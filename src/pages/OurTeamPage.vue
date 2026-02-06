@@ -15,13 +15,18 @@
       </div>
     </section>
 
-    <!-- Team Members Section -->
+    <!-- Leadership Team Section -->
     <section class="team-section">
       <div class="container">
+        <div class="board-header">
+          <div class="board-divider"></div>
+          <h2 class="section-title board-title">Our Leadership Team</h2>
+          <div class="board-divider"></div>
+        </div>
         <div class="team-grid">
           <div
             class="team-card"
-            v-for="(member, index) in teamMembers"
+            v-for="(member, index) in leadershipTeam"
             :key="index"
             :style="{ animationDelay: `${index * 0.15}s` }"
           >
@@ -47,23 +52,58 @@
 
                 <div class="contact-actions">
                   <a
+                    v-if="member.phone"
                     :href="`tel:${member.phone}`"
                     class="contact-btn phone-btn"
                     title="Call"
                   >
                     <q-icon name="phone" />
                   </a>
+
                   <a
+                    v-if="member.email"
                     :href="`mailto:${member.email}`"
                     class="contact-btn email-btn"
                     title="Email"
                   >
                     <q-icon name="email" />
                   </a>
+
+                  <span
+                    v-if="member.emailDisplay && !member.email"
+                    class="contact-btn email-btn disabled"
+                    title="Email not available"
+                  >
+                    <q-icon name="email" />
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Board Section -->
+    <section class="board-section">
+      <div class="container">
+        <div class="board-header">
+          <div class="board-divider"></div>
+          <h2 class="section-title board-title">Our Board</h2>
+          <div class="board-divider"></div>
+        </div>
+
+        <div class="board-wrapper">
+          <ol class="board-list">
+            <li
+              class="board-item"
+              v-for="(member, index) in boardMembers"
+              :key="index"
+              :style="{ animationDelay: `${(index + 4) * 0.1}s` }"
+            >
+              {{ member.name }}
+            </li>
+          </ol>
         </div>
       </div>
 
@@ -79,7 +119,7 @@
         <div class="cta-content">
           <h2 class="cta-title">Want to know more about us?</h2>
           <p class="cta-text">
-            Read more about Lorana Foundation's Establishment.
+            Read more about Lorena Foundation's Establishment.
           </p>
           <q-btn to="/our-story" class="cta-button" flat>
             <span>View Our Story</span>
@@ -89,7 +129,7 @@
       </div>
     </section>
 
-    <!-- Image Modal (Simple) -->
+    <!-- Image Modal -->
     <transition name="modal-fade">
       <div v-if="showModal" class="modal-overlay" @click="closeModal">
         <div class="modal-content" @click.stop>
@@ -115,46 +155,79 @@
 
 <script setup>
 import { ref } from "vue";
+import { useMeta } from "quasar";
+
+useMeta({
+  title: "Our Team - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Meet the dedicated team behind Lorena Foundation working to transform lives through community development programs." },
+    ogTitle: { property: "og:title", content: "Our Team - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Meet the dedicated team behind Lorena Foundation." },
+  },
+});
 
 const showModal = ref(false);
 const selectedMember = ref({});
 
-const teamMembers = ref([
+const leadershipTeam = ref([
   {
     name: "Barbra Ekusia",
     role: "Team Leader",
     image: "/barbra.jpg",
-    phone: "+256700000000",
-    email: "barbra@organization.org",
+    phone: "0788489974",
+    email: "mail",
     detailedBio:
-      "<p>Barbra Ekusia brings energy, dedication, and vision to our work. As <em>Team Leader</em>, she coordinates people and projects with a steady hand, ensuring that every effort moves us closer to positive and lasting change.</p><p>She thrives on teamwork, bringing together community voices, local partners, and our staff to create solutions that matter. Her leadership style combines compassion with clarity, making it easy for the team to stay focused, motivated, and effective.</p><p>For Barbra, leadership is more than guiding a team; it's about <em>empowering others</em> and building a shared path toward brighter futures.</p>",
+      "<p>Barbra brings <strong>energy, dedication, and vision</strong> to our work. As Team Leader, she coordinates people and projects with clarity and compassion, uniting community voices, partners, and staff to create meaningful solutions.</p><p>Her empowering leadership keeps the team <em>focused, motivated, and moving together</em> toward positive, lasting change.</p>",
   },
   {
     name: "Patricia Kokora",
     role: "Program Officer",
     image: "/patricia.jpg",
-    phone: "+256700000001",
-    email: "patricia@organization.org",
+    phone: "0775502323",
+    email: "mail",
     detailedBio:
-      "<p>Patricia Kokora is passionate about building lasting change and brighter futures together with the community. As our <em>Program Officer</em>, she helps design and guide projects that make a difference in people's everyday lives.</p><p>From working with community members to teaming up with local leaders and partners, Patricia ensures that our programs truly reflect the needs and dreams of the people we serve.</p><p>With a heart for service and an eye for detail, she keeps things moving smoothly—whether it's <em>planning activities</em>, <em>supporting volunteers</em>, or making sure we learn from every step we take.</p>",
+      "<p>Patricia is passionate about <strong>creating lasting change</strong> with the community. As Program Officer, she designs and guides projects that improve daily life.</p><p>By working closely with community members, leaders, and partners, she ensures our programs reflect real needs. With dedication and attention to detail, she keeps activities <em>organized, impactful, and continually improving</em>.</p>",
   },
   {
     name: "Maurine Maturu",
     role: "Operations & People Officer",
     image: "/maurine.jpg",
-    phone: "+256700000002",
-    email: "maurine@organization.org",
+    phone: "07",
+    email: "mail",
     detailedBio:
-      "<p>Maurine Maturu is committed to creating people-centered, smooth and effective operations. In her role, she oversees day-to-day processes while nurturing a supportive environment where the team can thrive.</p><p>She excels at bringing together staff, partners, and community members to solve some of the community challenges. Maurine's role is not just about managing systems.</p><p>It's about <em>empowering individuals</em> and building a foundation for sustainable growth and impact.</p>",
+      "<p>Maurine oversees daily processes while <strong>fostering a supportive environment</strong> where the team can thrive. By uniting staff, partners, and community members, she helps tackle key challenges.</p><p>Her work goes beyond managing systems: she <em>empowers individuals</em> and strengthens the foundation for sustainable impact.</p>",
   },
   {
     name: "Amos Edoza",
     role: "Volunteer Officer",
     image: "/amos.jpg",
-    phone: "+256700000003",
-    email: "amos@organization.org",
+    phone: "0787359197",
+    email: "mail",
     detailedBio:
-      "<p>Amos Edoza is passionate about creating lasting change through the power of community and volunteerism. As our <em>Volunteer Officer</em>, Amos plays a vital role in supporting, coordinating, and uplifting our volunteers.</p><p>He ensures volunteers have the tools, resources and guidance they need to make a real difference. From <em>onboarding and training</em> to <em>day-to-day support and recognition</em>, Amos works closely with both volunteers and community members.</p><p>He builds meaningful connections and shared impact, making sure every step we take together is <em>thoughtful, inclusive, and rooted in learning</em>.</p>",
+      "<p>Amos is the <strong>focal point for volunteerism & outreach</strong>. As Volunteer Officer, he supports and coordinates volunteers, ensuring they have the tools and guidance to make real impact.</p><p>From <em>onboarding and training to daily support and recognition</em>, Amos builds meaningful connections that create lasting change.</p>",
+  },
+]);
+
+const boardMembers = ref([
+  {
+    name: "John Bosco Candia",
+    phone: "",
+    email: "",
+  },
+  {
+    name: "Dorothy Nangobi",
+    phone: "0773045601",
+    email: "",
+  },
+  {
+    name: "Pastor Rogers Nuwahereza",
+    phone: "",
+    email: "",
+  },
+  {
+    name: "Reverend Hillary Amuki",
+    phone: "",
+    email: "",
   },
 ]);
 
@@ -245,6 +318,7 @@ const closeModal = () => {
     transform: translateY(0);
   }
 }
+
 .breadcrumb-nav {
   display: flex;
   align-items: center;
@@ -290,9 +364,25 @@ const closeModal = () => {
   }
 }
 
+// Section Title
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
 // Team Section
 .team-section {
-  padding: 2.5rem 0 3.5rem;
+  padding: 2.5rem 0 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.board-section {
+  padding: 1.5rem 0 3.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -318,6 +408,8 @@ const closeModal = () => {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInScale 0.8s ease-out backwards;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-4px);
@@ -345,6 +437,9 @@ const closeModal = () => {
 .card-inner {
   padding: 2rem;
   background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .member-image-wrapper {
@@ -358,7 +453,7 @@ const closeModal = () => {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   transition: all 0.4s ease;
 
@@ -371,20 +466,21 @@ const closeModal = () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   border-radius: 50%;
-  border: 3px solid #a52a2a;
-  box-shadow: 0 4px 12px rgba(165, 42, 42, 0.15);
+  border: 3px solid #4a90e2;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
   transition: all 0.4s ease;
 
   .image-circle:hover & {
     border-color: #19aae0;
-    box-shadow: 0 6px 20px rgba(25, 170, 224, 0.25);
+    box-shadow: 0 6px 20px rgba(25, 170, 224, 0.3);
   }
 }
 
 .plus-overlay {
   position: absolute;
-  bottom: -15px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   opacity: 0;
@@ -414,6 +510,9 @@ const closeModal = () => {
 
 .member-info {
   text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .member-name {
@@ -433,28 +532,36 @@ const closeModal = () => {
   font-size: 0.9rem;
   font-weight: 600;
   color: #ffffff;
-  background: #a52a2a;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
-  margin-bottom: 1.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0.25rem;
   transition: all 0.3s ease;
 
-  .team-card:hover & {
-    background: #19aae0;
-    transform: scale(1.05);
+  .team-card:hover &,
+  .board-card:hover & {
+    background: linear-gradient(135deg, #19aae0 0%, #1590c0 100%);
+    transform: scale(1.01);
   }
 }
 
 .member-bio {
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.65;
   color: #475569;
-  text-align: justify;
+  text-align: left;
   margin: 1.25rem 0;
   padding: 1.25rem;
   background: rgba(248, 250, 252, 0.8);
   border-radius: 12px;
   border: 1px solid rgba(226, 232, 240, 0.6);
+  flex: 1;
+  hyphens: auto;
+  word-spacing: -0.05em;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
   :deep(p) {
     margin: 0 0 1rem 0;
@@ -465,12 +572,12 @@ const closeModal = () => {
   }
 
   :deep(strong) {
-    color: #000000;
-    font-weight: 700;
+    color: #1e293b;
+    font-weight: 600;
   }
 
   :deep(em) {
-    font-style: italic;
+    font-style: normal;
     color: #19aae0;
     font-weight: 500;
   }
@@ -492,6 +599,7 @@ const closeModal = () => {
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 
   .q-icon {
     font-size: 1.2rem;
@@ -502,27 +610,170 @@ const closeModal = () => {
     color: #19aae0;
     border: 1.5px solid rgba(25, 170, 224, 0.3);
 
-    &:hover {
+    &:hover:not(.inactive) {
       background: #19aae0;
       color: #ffffff;
       border-color: #19aae0;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(25, 170, 224, 0.3);
     }
+
+    &.inactive {
+      opacity: 0.3;
+      cursor: default;
+    }
   }
 
   &.email-btn {
-    background: rgba(165, 42, 42, 0.1);
-    color: #a52a2a;
-    border: 1.5px solid rgba(165, 42, 42, 0.3);
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    border: 1.5px solid rgba(74, 144, 226, 0.3);
 
-    &:hover {
-      background: #a52a2a;
+    &:hover:not(.inactive) {
+      background: #4a90e2;
       color: #ffffff;
-      border-color: #a52a2a;
+      border-color: #4a90e2;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(165, 42, 42, 0.3);
+      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
     }
+
+    &.inactive {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+}
+
+// Board Section Styles
+// Board Section Styles
+.board-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.board-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(203, 213, 225, 0.6),
+    transparent
+  );
+  max-width: 200px;
+}
+
+.board-title {
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.35rem;
+}
+
+.board-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.board-list {
+  position: relative;
+  z-index: 1;
+  padding-left: 1.5rem;
+  list-style: decimal;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.board-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  animation: fadeInUp 0.6s ease-out backwards;
+  line-height: 1.6;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::marker {
+    color: #4a90e2;
+    font-weight: 600;
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 768px) {
+  .board-wrapper {
+    padding: 1.5rem 2rem;
+  }
+
+  .board-item {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .board-divider {
+    max-width: 60px;
+  }
+
+  .board-title {
+    font-size: 1.2rem;
+  }
+}
+
+.board-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a90e2;
+  min-width: 30px;
+}
+
+.board-name {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.board-contact {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.board-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  text-decoration: none;
+  background: rgba(74, 144, 226, 0.08);
+  color: #4a90e2;
+  border: 1px solid rgba(74, 144, 226, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover:not(.inactive) {
+    background: #4a90e2;
+    color: #ffffff;
+    border-color: #4a90e2;
+    transform: translateY(-2px);
+  }
+
+  &.inactive {
+    opacity: 0.3;
+    cursor: default;
   }
 }
 
@@ -657,7 +908,7 @@ const closeModal = () => {
   height: 300px;
   background: radial-gradient(
     circle,
-    rgba(165, 42, 42, 0.025) 0%,
+    rgba(74, 144, 226, 0.025) 0%,
     transparent 70%
   );
   bottom: -80px;
@@ -753,7 +1004,6 @@ const closeModal = () => {
   color: rgba(255, 255, 255, 0.9);
   margin: 0 0 1.75rem 0;
 }
-
 .cta-button {
   display: inline-flex;
   align-items: center;
@@ -768,69 +1018,68 @@ const closeModal = () => {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
     background: #f8fafc;
   }
-
   &:active {
     transform: translateY(-1px);
   }
-
   .cta-icon {
     font-size: 1.15rem;
     transition: transform 0.3s ease;
   }
-
   &:hover .cta-icon {
     transform: translateX(5px);
   }
 }
-
 // Mobile Responsive
 @media (max-width: 768px) {
   .breadcrumb-section {
     height: 100px;
   }
-
   .container {
     padding: 0 1.5rem;
   }
-
-  .team-section {
-    padding: 2rem 0 3rem;
+  .team-section,
+  .board-section {
+    padding: 2rem 0 2rem;
   }
-
   .card-inner {
     padding: 1.75rem;
   }
-
   .image-circle {
     width: 160px;
     height: 160px;
   }
-
   .member-name {
     font-size: 1.35rem;
   }
-
   .member-bio {
     font-size: 0.9rem;
   }
-
   .modal-image {
     width: 100%;
     height: auto;
   }
-
   .modal-caption {
     font-size: 1.5rem;
   }
-
   .cta-section {
     padding: 3rem 0;
+  }
+  .board-divider {
+    max-width: 80px;
+  }
+  .board-title {
+    font-size: 1.2rem;
+  }
+  .board-item {
+    padding: 0.85rem 1.25rem;
+  }
+  .board-name {
+    font-size: 0.95rem;
   }
 }
 </style>

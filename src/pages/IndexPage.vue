@@ -30,7 +30,7 @@
                 ><span class="typing-cursor" v-show="showCursor"></span>
               </h1>
 
-              <a href="#campaigns" class="campaigns-link">
+              <a href="/campaigns" class="campaigns-link">
                 <span class="link-arrow">→</span> Explore Our Campaigns
               </a>
             </div>
@@ -121,49 +121,13 @@
           <!-- Left Side: Animated Graphics with Campaigns -->
           <div class="graphics-column">
             <div class="impact-graphics">
-              <!-- Floating Hearts Animation -->
-              <div class="hearts-container">
-                <div class="floating-heart heart-1">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M50,85 C50,85 15,60 15,35 C15,20 25,10 35,10 C42,10 47,14 50,20 C53,14 58,10 65,10 C75,10 85,20 85,35 C85,60 50,85 50,85 Z"
-                      fill="#e74c3c"
-                    />
-                  </svg>
-                </div>
-                <div class="floating-heart heart-2">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M50,85 C50,85 15,60 15,35 C15,20 25,10 35,10 C42,10 47,14 50,20 C53,14 58,10 65,10 C75,10 85,20 85,35 C85,60 50,85 50,85 Z"
-                      fill="#c0392b"
-                    />
-                  </svg>
-                </div>
-                <div class="floating-heart heart-3">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M50,85 C50,85 15,60 15,35 C15,20 25,10 35,10 C42,10 47,14 50,20 C53,14 58,10 65,10 C75,10 85,20 85,35 C85,60 50,85 50,85 Z"
-                      fill="#e67e22"
-                    />
-                  </svg>
-                </div>
-                <div class="floating-heart heart-4">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M50,85 C50,85 15,60 15,35 C15,20 25,10 35,10 C42,10 47,14 50,20 C53,14 58,10 65,10 C75,10 85,20 85,35 C85,60 50,85 50,85 Z"
-                      fill="#f39c12"
-                    />
-                  </svg>
-                </div>
-              </div>
-
               <!-- Central Campaigns Grid -->
               <div class="central-illustration">
                 <div class="ripple-effect ripple-1"></div>
                 <div class="ripple-effect ripple-2"></div>
                 <div class="ripple-effect ripple-3"></div>
                 <div class="campaigns-grid">
-                  <a href="/campaigns/wash" class="campaign-item">
+                  <a href="/wash" class="campaign-item">
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -176,7 +140,7 @@
                     <div class="campaign-name">WASH</div>
                   </a>
 
-                  <a href="/campaigns/community-health" class="campaign-item">
+                  <a href="/community-health" class="campaign-item">
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -193,7 +157,7 @@
                     <div class="campaign-name">Community Health</div>
                   </a>
 
-                  <a href="/campaigns/education" class="campaign-item">
+                  <a href="/education-for-all" class="campaign-item">
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -207,7 +171,7 @@
                     <div class="campaign-name">Education for All</div>
                   </a>
 
-                  <a href="/campaigns/equality" class="campaign-item">
+                  <a href="/equality-and-empowerment" class="campaign-item">
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -222,10 +186,7 @@
                     <div class="campaign-name">Equality & Empowerment</div>
                   </a>
 
-                  <a
-                    href="/campaigns/green-transformation"
-                    class="campaign-item"
-                  >
+                  <a href="/green-transformation" class="campaign-item">
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -242,7 +203,10 @@
                     <div class="campaign-name">Green Transformation</div>
                   </a>
 
-                  <a href="/campaigns/livelihood" class="campaign-item">
+                  <a
+                    href="/livelihood-and-economic-inclusion"
+                    class="campaign-item"
+                  >
                     <div class="campaign-icon">
                       <svg
                         viewBox="0 0 24 24"
@@ -324,6 +288,15 @@
 export default {
   name: "HomePage",
 
+  meta: {
+    title: "Lorena Foundation - Together We Can Transform Lives",
+    meta: {
+      description: { name: "description", content: "Lorena Foundation is a non-profit empowering communities through education, health, equality, and sustainable development in Uganda and beyond." },
+      ogTitle: { property: "og:title", content: "Lorena Foundation - Together We Can Transform Lives" },
+      ogDescription: { property: "og:description", content: "Empowering communities through education, health, equality, and sustainable development." },
+    },
+  },
+
   data() {
     return {
       slide: 0,
@@ -334,24 +307,35 @@ export default {
       typeSpeed: 90,
       images: [
         {
-          src: "/women_in_tea.jpg",
-          caption: "Empowering Women",
-          description: "Supporting women farmers in their agricultural journey",
+          src: "/water.jpg",
+          caption: "WASH (Water, Sanitation & Health)",
+          description: "Give Water. Give Life. Transform a Future.",
         },
         {
           src: "/woman_carrying_baby.jpg",
-          caption: "Maternal Care",
-          description: "Nurturing mothers and children with love and support",
+          caption: "Community Health",
+          description: "Health is Not a Privilege. It's a Human Right.",
         },
         {
-          src: "/our_values.jpg",
-          caption: "Our Values",
-          description: "Built on faith, compassion, and community",
+          src: "/group-african-kids-classroom-education.jpg",
+          caption: "Education for All",
+          description: "Educate a Child. Empower a Future.",
         },
         {
-          src: "/education.jpg",
-          caption: "Education",
-          description: "Building brighter futures through quality learning",
+          src: "/carpenter-cutting-mdf-board-inside-workshop-empowerment.jpg",
+          caption: "Equality and Empowerment",
+          description: "Lift Voices. Break Chains. Empower Futures.",
+        },
+        {
+          src: "/portrait-countryside-worker-posing-green-transformation.jpg",
+          caption: "Green Transformation",
+          description:
+            "Protect the Planet. Empower Communities. Transform the Future",
+        },
+        {
+          src: "/medium-shot-smiley-elderly-woman-outside-mission.jpg",
+          caption: "Livelihood & Economic Inclusion",
+          description: "Opportunity Shouldn’t Be a Privilege.",
         },
       ],
     };
@@ -928,73 +912,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Floating Hearts */
-.hearts-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.floating-heart {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  animation: floatUp 12s ease-in-out infinite;
-}
-
-.floating-heart svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-}
-
-.heart-1 {
-  left: 15%;
-  top: 80%;
-  animation-delay: 0s;
-}
-
-.heart-2 {
-  left: 75%;
-  top: 70%;
-  animation-delay: 3s;
-}
-
-.heart-3 {
-  left: 30%;
-  top: 60%;
-  animation-delay: 6s;
-  width: 40px;
-  height: 40px;
-}
-
-.heart-4 {
-  left: 85%;
-  top: 40%;
-  animation-delay: 9s;
-  width: 50px;
-  height: 50px;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(0.8) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.6;
-  }
-  85% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-400px) scale(1.2) rotate(360deg);
-    opacity: 0;
-  }
 }
 
 /* Central Campaigns Display */

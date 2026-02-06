@@ -277,11 +277,20 @@
 import { ref, reactive } from "vue";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "src/boot/firebase";
-import { Notify } from "quasar";
+import { Notify, useMeta } from "quasar";
 
 export default {
   name: "VolunteerPage",
   setup() {
+    useMeta({
+      title: "Volunteer - Lorena Foundation",
+      meta: {
+        description: { name: "description", content: "Join Lorena Foundation as a volunteer and help transform lives through education, health and community empowerment programs." },
+        ogTitle: { property: "og:title", content: "Volunteer - Lorena Foundation" },
+        ogDescription: { property: "og:description", content: "Join us as a volunteer and help transform lives." },
+      },
+    });
+
     const submitted = ref(false);
     const loading = ref(false);
     const formData = ref({
@@ -687,78 +696,6 @@ export default {
   padding: 5rem 0;
   background: #ffffff;
   overflow: hidden;
-}
-
-.form-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  opacity: 1;
-  background-color: #ffffff;
-  background-image: radial-gradient(
-      circle at 15% 20%,
-      rgba(25, 170, 224, 0.08) 0%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(25, 170, 224, 0.08) 0%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(25, 170, 224, 0.04) 0%,
-      transparent 50%
-    );
-  background-size: 800px 800px, 800px 800px, 400px 400px;
-  background-position: 0% 0%, 100% 100%, 50% 50%;
-  animation: pattern-float 20s ease-in-out infinite;
-}
-
-.form-pattern::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 35px,
-      rgba(25, 170, 224, 0.02) 35px,
-      rgba(25, 170, 224, 0.02) 70px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 35px,
-      rgba(255, 99, 71, 0.015) 35px,
-      rgba(255, 99, 71, 0.015) 70px
-    );
-  animation: pattern-shift 15s linear infinite;
-}
-
-@keyframes pattern-float {
-  0%,
-  100% {
-    background-position: 0% 0%, 100% 100%, 50% 50%;
-  }
-  50% {
-    background-position: 100% 100%, 0% 0%, 60% 40%;
-  }
-}
-
-@keyframes pattern-shift {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(70px, 70px);
-  }
 }
 
 .form-header {

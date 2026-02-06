@@ -170,7 +170,7 @@
               <p class="quote">
                 “The Earth does not belong to us: we belong to the Earth.”
                 <br />
-                <span class="quote-author">— Marlee Matlin</span>
+                <span class="quote-author"> Marlee Matlin</span>
               </p>
 
               <p class="headline" style="text-align: right">
@@ -185,7 +185,7 @@
                   >Too much heat. Too much rain. Food running out. Forests
                   disappearing.</strong
                 >
-                Climate change is no longer a distant threat—it’s here, and
+                Climate change is no longer a distant threat it’s here, and
                 communities are feeling its impact.
               </p>
 
@@ -244,8 +244,7 @@
                 <div class="preview-badge">Coming Next</div>
                 <h3 class="preview-title">Livelihood and economic inclusion</h3>
                 <p class="preview-text">
-                  Empowering children through quality education and learning
-                  resources.
+                  Alone we can do so little; together we can do so much.
                 </p>
               </div>
             </div>
@@ -258,7 +257,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "Green Transformation - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Lorena Foundation's Green Transformation campaign promotes environmental sustainability and climate action in communities." },
+    ogTitle: { property: "og:title", content: "Green Transformation - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Promoting environmental sustainability and climate action in communities." },
+  },
+});
 
 const {
   campaign,
@@ -304,7 +313,8 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/green-transformation.jpg") center/cover;
+  background: url("/portrait-countryside-worker-posing-green-transformation.jpg")
+    center/cover;
   background-attachment: fixed;
   z-index: 1;
 }
@@ -695,7 +705,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }

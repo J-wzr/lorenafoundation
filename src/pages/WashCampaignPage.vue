@@ -170,7 +170,7 @@
               <p class="quote">
                 "Thousands have lived without love, not one without water."
                 <br />
-                <span class="quote-author">— W.H. Auden</span>
+                <span class="quote-author"> W.H. Auden</span>
               </p>
 
               <p class="headline" style="text-align: right">
@@ -191,7 +191,7 @@
                 At <strong class="brand">Lorena Foundation</strong>, we believe
                 no one should have to choose between thirst and sickness. We are
                 drilling boreholes (from $5,000), building family latrines, and
-                delivering hygiene education—bringing safe water and sanitation
+                delivering hygiene education bringing safe water and sanitation
                 to communities that need it most.
               </p>
 
@@ -204,7 +204,7 @@
               </div>
 
               <p class="conclusion" style="text-align: justify">
-                When you give water, you give life—and transform the future for
+                When you give water, you give life and transform the future for
                 generations.
               </p>
             </div>
@@ -254,8 +254,7 @@
                 <div class="preview-badge">Coming Next</div>
                 <h3 class="preview-title">Community Health</h3>
                 <p class="preview-text">
-                  Empowering children through quality education and learning
-                  resources.
+                  Health is not a Privilege, Its a Human Right
                 </p>
               </div>
             </div>
@@ -268,7 +267,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "WASH Campaign - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Support clean water, sanitation and hygiene initiatives empowering communities through the Lorena Foundation WASH campaign." },
+    ogTitle: { property: "og:title", content: "WASH Campaign - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Support clean water, sanitation and hygiene initiatives empowering communities." },
+  },
+});
 
 const {
   campaign,
@@ -711,7 +720,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }

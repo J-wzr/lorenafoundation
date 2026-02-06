@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://lorenafoundation.org/</loc><priority>1.0</priority></url>
+  <url><loc>https://lorenafoundation.org/campaigns</loc><priority>0.8</priority></url>
+  <url><loc>https://lorenafoundation.org/wash</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/community-health</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/education-for-all</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/equality-and-empowerment</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/green-transformation</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/livelihood-and-economic-inclusion</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/core-values</loc><priority>0.6</priority></url>
+  <url><loc>https://lorenafoundation.org/our-team</loc><priority>0.6</priority></url>
+  <url><loc>https://lorenafoundation.org/our-story</loc><priority>0.6</priority></url>
+  <url><loc>https://lorenafoundation.org/volunteer</loc><priority>0.7</priority></url>
+  <url><loc>https://lorenafoundation.org/contact-us</loc><priority>0.6</priority></url>
+</urlset>

@@ -171,7 +171,7 @@
                 “Education is the most powerful weapon which you can use to
                 change the world.”
                 <br />
-                <span class="quote-author">— Nelson Mandela</span>
+                <span class="quote-author"> Nelson Mandela</span>
               </p>
 
               <p class="headline" style="text-align: right">
@@ -195,7 +195,7 @@
 
               <p style="text-align: justify">
                 At <strong class="brand">Lorena Foundation</strong>, we are
-                changing this story—one child at a time. We partner with
+                changing this story one child at a time. We partner with
                 communities to build schools, provide learning materials
                 starting from $10, support trained teachers, and create safe,
                 inclusive learning spaces where every child can thrive.
@@ -213,7 +213,7 @@
               </div>
 
               <p class="conclusion" style="text-align: justify">
-                Your support can open a classroom door—and unlock a lifetime of
+                Your support can open a classroom door and unlock a lifetime of
                 possibility.
               </p>
             </div>
@@ -250,8 +250,7 @@
                 <div class="preview-badge">Coming Next</div>
                 <h3 class="preview-title">Equality and Empowerment</h3>
                 <p class="preview-text">
-                  Empowering children through quality education and learning
-                  resources.
+                  We cannot succeed when half of us are held back.
                 </p>
               </div>
             </div>
@@ -264,7 +263,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "Education for All - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Lorena Foundation's Education for All campaign ensures every child has access to quality education and learning opportunities." },
+    ogTitle: { property: "og:title", content: "Education for All - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Ensuring every child has access to quality education and learning opportunities." },
+  },
+});
 
 const {
   campaign,
@@ -297,7 +306,7 @@ onMounted(() => {
 // Hero - Background stays behind
 .hero {
   position: relative;
-  height: 50vh;
+  height: 62vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -310,7 +319,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/education.jpg") center/cover;
+  background: url("/group-african-kids-classroom-education.jpg") center/cover;
   background-attachment: fixed;
   z-index: 1;
 }
@@ -701,7 +710,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }

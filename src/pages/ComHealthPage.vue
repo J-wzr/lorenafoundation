@@ -170,7 +170,7 @@
               <p class="quote">
                 "Health is a human right, not a privilege to be purchased."
                 <br />
-                <span class="quote-author">— Jim Yong Kim</span>
+                <span class="quote-author"> Jim Yong Kim</span>
               </p>
 
               <p class="headline" style="text-align: right">
@@ -243,7 +243,7 @@
               <div class="preview-image"></div>
               <div class="preview-content">
                 <div class="preview-badge">Coming Next</div>
-                <h3 class="preview-title">Community Health</h3>
+                <h3 class="preview-title">Education for All</h3>
                 <p class="preview-text">
                   Empowering children through quality education and learning
                   resources.
@@ -259,7 +259,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "Community Health - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Lorena Foundation's Community Health campaign promotes accessible healthcare and wellness for underserved communities." },
+    ogTitle: { property: "og:title", content: "Community Health - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Promoting accessible healthcare and wellness for underserved communities." },
+  },
+});
 
 const {
   campaign,
@@ -696,7 +706,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }
@@ -1016,7 +1025,7 @@ onMounted(() => {
   .preview-image {
     width: 100%;
     height: 200px;
-    background: url("/education.jpg") center/cover;
+    background: url("/group-african-kids-classroom-education.jpg") center/cover;
     background-color: #94a3b8;
   }
 

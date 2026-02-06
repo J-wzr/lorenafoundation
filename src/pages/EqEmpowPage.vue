@@ -170,7 +170,7 @@
               <p class="quote">
                 “We cannot succeed when half of us are held back.”
                 <br />
-                <span class="quote-author">— Malala Yousafzai</span>
+                <span class="quote-author"> Malala Yousafzai</span>
               </p>
 
               <p class="headline" style="text-align: right">
@@ -191,8 +191,8 @@
               <p style="text-align: justify">
                 At <strong class="brand">Lorena Foundation</strong>, we refuse
                 to accept that. Through education, vocational training, and
-                leadership programs, we equip individuals—especially women and
-                girls—with the tools to reclaim their futures.
+                leadership programs, we equip individuals especially women and
+                girls with the tools to reclaim their futures.
               </p>
 
               <div class="callout" style="text-align: justify">
@@ -206,7 +206,7 @@
 
               <p class="conclusion" style="text-align: justify">
                 Stand out. Speak up. By supporting this cause, you’re not just
-                donating—you’re fueling lasting change.
+                donating you’re fueling lasting change.
               </p>
             </div>
           </div>
@@ -242,8 +242,7 @@
                 <div class="preview-badge">Coming Next</div>
                 <h3 class="preview-title">Green Transformation</h3>
                 <p class="preview-text">
-                  Empowering children through quality education and learning
-                  resources.
+                  Protect the Planet. Empower Communities. Transform the Future.
                 </p>
               </div>
             </div>
@@ -256,7 +255,17 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useMeta } from "quasar";
 import { useCampaigns } from "src/composables/useCampaigns";
+
+useMeta({
+  title: "Equality & Empowerment - Lorena Foundation",
+  meta: {
+    description: { name: "description", content: "Lorena Foundation champions gender equality and community empowerment through advocacy, training and inclusive development." },
+    ogTitle: { property: "og:title", content: "Equality & Empowerment - Lorena Foundation" },
+    ogDescription: { property: "og:description", content: "Championing gender equality and community empowerment." },
+  },
+});
 
 const {
   campaign,
@@ -302,7 +311,8 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/equality.jpg") center/cover;
+  background: url("/carpenter-cutting-mdf-board-inside-workshop-empowerment.jpg")
+    center/cover;
   background-attachment: fixed;
   z-index: 1;
 }
@@ -693,7 +703,6 @@ onMounted(() => {
 // Stats Card
 .stats {
   padding: 1.5rem;
-  background: #73c2ff;
   box-shadow: none !important;
   border-radius: 0 !important;
 }
@@ -1013,7 +1022,8 @@ onMounted(() => {
   .preview-image {
     width: 100%;
     height: 200px;
-    background: url("/green-transformation.jpg") center/cover;
+    background: url("/portrait-countryside-worker-posing-green-transformation.jpg")
+      center/cover;
     background-color: #94a3b8;
   }
 
