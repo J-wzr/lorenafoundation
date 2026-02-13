@@ -93,17 +93,55 @@
           <div class="board-divider"></div>
         </div>
 
-        <div class="board-wrapper">
-          <ol class="board-list">
-            <li
-              class="board-item"
-              v-for="(member, index) in boardMembers"
-              :key="index"
-              :style="{ animationDelay: `${(index + 4) * 0.1}s` }"
-            >
-              {{ member.name }}
-            </li>
-          </ol>
+        <!-- Board members WITH images: Bosco & Norman -->
+        <div class="board-cards-grid">
+          <div
+            class="team-card"
+            v-for="(member, index) in boardMembersWithImages"
+            :key="'board-img-' + index"
+            :style="{ animationDelay: `${index * 0.15}s` }"
+          >
+            <div class="card-inner">
+              <div class="member-image-wrapper" @click="openModal(member)">
+                <div class="image-circle image-circle--white-bg">
+                  <img
+                    :src="member.image"
+                    :alt="member.name"
+                    class="member-image member-image--contain"
+                  />
+                  <div class="plus-overlay">
+                    <div class="plus-icon">+</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="member-info">
+                <h3 class="member-name">{{ member.name }}</h3>
+                <span class="member-role">{{ member.role }}</span>
+                <div class="member-bio">
+                  <p>{{ member.profession }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Board members WITHOUT images: Dorothy, Pastor Rogers, Rev. Hillary -->
+        <div class="simple-board-row">
+          <div
+            class="simple-board-card"
+            v-for="(member, index) in boardMembersSimple"
+            :key="'board-simple-' + index"
+            :style="{ animationDelay: `${(index + 2) * 0.12}s` }"
+          >
+            <div class="simple-avatar">
+              <q-icon name="person" class="avatar-icon" />
+            </div>
+            <div class="simple-info">
+              <span class="simple-name">{{ member.name }}</span>
+              <span class="simple-role">Board Member</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -160,9 +198,16 @@ import { useMeta } from "quasar";
 useMeta({
   title: "Our Team - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Meet the dedicated team behind Lorena Foundation working to transform lives through community development programs." },
+    description: {
+      name: "description",
+      content:
+        "Meet the dedicated team behind Lorena Foundation working to transform lives through community development programs.",
+    },
     ogTitle: { property: "og:title", content: "Our Team - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Meet the dedicated team behind Lorena Foundation." },
+    ogDescription: {
+      property: "og:description",
+      content: "Meet the dedicated team behind Lorena Foundation.",
+    },
   },
 });
 
@@ -208,27 +253,27 @@ const leadershipTeam = ref([
   },
 ]);
 
-const boardMembers = ref([
+// Board members with photos — rendered as full cards
+const boardMembersWithImages = ref([
   {
     name: "John Bosco Candia",
-    phone: "",
-    email: "",
+    role: "Co-Founder & Board Member",
+    profession: "Humanitarian and Development Practitioner",
+    image: "/Bosco.png",
   },
   {
-    name: "Dorothy Nangobi",
-    phone: "0773045601",
-    email: "",
+    name: "Eng. Norman Burua Adriko",
+    role: "Board Member",
+    profession: "Engineering Professional and Academic",
+    image: "/Norman.png",
   },
-  {
-    name: "Pastor Rogers Nuwahereza",
-    phone: "",
-    email: "",
-  },
-  {
-    name: "Reverend Hillary Amuki",
-    phone: "",
-    email: "",
-  },
+]);
+
+// Board members without photos — rendered as compact flex pills
+const boardMembersSimple = ref([
+  { name: "Dorothy Nangobi" },
+  { name: "Pastor Rogers Nuwahereza" },
+  { name: "Reverend Hillary Amuki" },
 ]);
 
 const openModal = (member) => {
@@ -253,7 +298,7 @@ const closeModal = () => {
   overflow-x: hidden;
 }
 
-// Breadcrumb Section
+// ── Breadcrumb ────────────────────────────────────────────────────────────────
 .breadcrumb-section {
   position: relative;
   height: 200px;
@@ -265,10 +310,7 @@ const closeModal = () => {
 
 .breadcrumb-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: url("/volunteer1.jpg");
   background-size: cover;
   background-position: center;
@@ -280,10 +322,7 @@ const closeModal = () => {
 
 .breadcrumb-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.196) 0%,
@@ -346,7 +385,7 @@ const closeModal = () => {
   font-size: 1rem;
 }
 
-// Container
+// ── Layout helpers ────────────────────────────────────────────────────────────
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -364,17 +403,26 @@ const closeModal = () => {
   }
 }
 
-// Section Title
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .section-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1e293b;
   margin: 0 0 2rem 0;
-  text-align: left;
   letter-spacing: -0.01em;
 }
 
-// Team Section
+// ── Sections ──────────────────────────────────────────────────────────────────
 .team-section {
   padding: 2.5rem 0 1.5rem;
   position: relative;
@@ -387,6 +435,7 @@ const closeModal = () => {
   overflow: hidden;
 }
 
+// ── Leadership grid ───────────────────────────────────────────────────────────
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -400,38 +449,31 @@ const closeModal = () => {
   }
 }
 
+// ── Board image-card grid (Bosco & Norman) ────────────────────────────────────
+.board-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+// ── Shared card ───────────────────────────────────────────────────────────────
 .team-card {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInScale 0.8s ease-out backwards;
   display: flex;
   flex-direction: column;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.03);
-    border-color: #cbd5e1;
-
-    .plus-overlay {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
 .card-inner {
@@ -442,6 +484,7 @@ const closeModal = () => {
   height: 100%;
 }
 
+// ── Member image ──────────────────────────────────────────────────────────────
 .member-image-wrapper {
   display: flex;
   justify-content: center;
@@ -462,6 +505,11 @@ const closeModal = () => {
   }
 }
 
+// White background for transparent-bg images (Bosco.png, Norman.png)
+.image-circle--white-bg {
+  background-color: #ffffff;
+}
+
 .member-image {
   width: 100%;
   height: 100%;
@@ -469,13 +517,14 @@ const closeModal = () => {
   object-position: center 30%;
   border-radius: 50%;
   border: 3px solid #4a90e2;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
   transition: all 0.4s ease;
+}
 
-  .image-circle:hover & {
-    border-color: #19aae0;
-    box-shadow: 0 6px 20px rgba(25, 170, 224, 0.3);
-  }
+// Use object-fit:contain so transparent-bg images aren't cropped
+.member-image--contain {
+  object-fit: contain;
+  object-position: center center;
+  background-color: #ffffff;
 }
 
 .plus-overlay {
@@ -508,6 +557,7 @@ const closeModal = () => {
   }
 }
 
+// ── Member info ───────────────────────────────────────────────────────────────
 .member-info {
   text-align: center;
   flex: 1;
@@ -521,10 +571,6 @@ const closeModal = () => {
   color: #000000;
   margin: 0 0 0.5rem 0;
   transition: color 0.3s ease;
-
-  .team-card:hover & {
-    color: #19aae0;
-  }
 }
 
 .member-role {
@@ -539,12 +585,6 @@ const closeModal = () => {
   border-bottom-right-radius: 0;
   margin-bottom: 0.25rem;
   transition: all 0.3s ease;
-
-  .team-card:hover &,
-  .board-card:hover & {
-    background: linear-gradient(135deg, #19aae0 0%, #1590c0 100%);
-    transform: scale(1.01);
-  }
 }
 
 .member-bio {
@@ -552,7 +592,7 @@ const closeModal = () => {
   line-height: 1.65;
   color: #475569;
   text-align: left;
-  margin: 1.25rem 0;
+  margin: 0 0 1.25rem 0;
   padding: 1.25rem;
   background: rgba(248, 250, 252, 0.8);
   border-radius: 12px;
@@ -563,9 +603,15 @@ const closeModal = () => {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
+  p {
+    margin: 0 0 1rem 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   :deep(p) {
     margin: 0 0 1rem 0;
-
     &:last-child {
       margin-bottom: 0;
     }
@@ -583,6 +629,7 @@ const closeModal = () => {
   }
 }
 
+// ── Contact buttons ───────────────────────────────────────────────────────────
 .contact-actions {
   display: flex;
   gap: 0.75rem;
@@ -644,8 +691,7 @@ const closeModal = () => {
   }
 }
 
-// Board Section Styles
-// Board Section Styles
+// ── Board header ──────────────────────────────────────────────────────────────
 .board-header {
   display: flex;
   align-items: center;
@@ -673,111 +719,148 @@ const closeModal = () => {
   font-size: 1.35rem;
 }
 
-.board-wrapper {
-  max-width: 100%;
-  margin: 0 auto;
-  background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
-  border-radius: 16px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-}
-
-.board-list {
+// ── Simple flex cards (Dorothy, Pastor Rogers, Rev. Hillary) ──────────────────
+.simple-board-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: space-between;
   position: relative;
   z-index: 1;
-  padding-left: 1.5rem;
-  list-style: decimal;
-  margin: 0;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
-.board-item {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1e293b;
-  margin-bottom: 0.75rem;
-  animation: fadeInUp 0.6s ease-out backwards;
-  line-height: 1.6;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  &::marker {
-    color: #4a90e2;
-    font-weight: 600;
-  }
-}
-
-// Mobile Responsive
-@media (max-width: 768px) {
-  .board-wrapper {
-    padding: 1.5rem 2rem;
-  }
-
-  .board-item {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .board-divider {
-    max-width: 60px;
-  }
-
-  .board-title {
-    font-size: 1.2rem;
-  }
-}
-
-.board-number {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #4a90e2;
-  min-width: 30px;
-}
-
-.board-name {
-  flex: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1e293b;
-}
-
-.board-contact {
+.simple-board-card {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem 1.6rem;
+  animation: fadeInScale 0.8s ease-out backwards;
+  transition: all 0.3s ease;
+  flex: 1 1 200px;
+  max-width: 310px;
 }
 
-.board-contact-btn {
+.simple-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(74, 144, 226, 0.08);
+  border: 2px solid rgba(74, 144, 226, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  text-decoration: none;
-  background: rgba(74, 144, 226, 0.08);
-  color: #4a90e2;
-  border: 1px solid rgba(74, 144, 226, 0.15);
+  flex-shrink: 0;
   transition: all 0.3s ease;
-  cursor: pointer;
 
-  &:hover:not(.inactive) {
-    background: #4a90e2;
-    color: #ffffff;
-    border-color: #4a90e2;
-    transform: translateY(-2px);
-  }
-
-  &.inactive {
-    opacity: 0.3;
-    cursor: default;
+  .avatar-icon {
+    font-size: 1.4rem;
+    color: #4a90e2;
+    transition: color 0.3s ease;
   }
 }
 
-// Modal Styles
+.simple-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.simple-name {
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: #1e293b;
+  transition: color 0.3s ease;
+  line-height: 1.3;
+}
+
+.simple-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a90e2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+// ── Background Circles ────────────────────────────────────────────────────────
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle-1 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(25, 170, 224, 0.03) 0%,
+    transparent 70%
+  );
+  top: -80px;
+  left: -100px;
+  animation: float-slow 25s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(74, 144, 226, 0.025) 0%,
+    transparent 70%
+  );
+  bottom: -80px;
+  right: -80px;
+  animation: float-slow 30s ease-in-out infinite reverse;
+}
+
+.circle-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(25, 170, 224, 0.02) 0%,
+    transparent 70%
+  );
+  top: 50%;
+  right: 10%;
+  animation: float-medium 20s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.03);
+  }
+  50% {
+    transform: translate(-15px, -30px) scale(0.97);
+  }
+  75% {
+    transform: translate(-25px, 15px) scale(1.01);
+  }
+}
+
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -30px) rotate(3deg);
+  }
+  66% {
+    transform: translate(-20px, 20px) rotate(-3deg);
+  }
+}
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -800,10 +883,7 @@ const closeModal = () => {
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
@@ -882,83 +962,7 @@ const closeModal = () => {
   margin-top: 1rem;
 }
 
-// Background Circles
-.bg-circle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.circle-1 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(
-    circle,
-    rgba(25, 170, 224, 0.03) 0%,
-    transparent 70%
-  );
-  top: -80px;
-  left: -100px;
-  animation: float-slow 25s ease-in-out infinite;
-}
-
-.circle-2 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(74, 144, 226, 0.025) 0%,
-    transparent 70%
-  );
-  bottom: -80px;
-  right: -80px;
-  animation: float-slow 30s ease-in-out infinite reverse;
-}
-
-.circle-3 {
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(
-    circle,
-    rgba(25, 170, 224, 0.02) 0%,
-    transparent 70%
-  );
-  top: 50%;
-  right: 10%;
-  animation: float-medium 20s ease-in-out infinite;
-}
-
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(20px, -20px) scale(1.03);
-  }
-  50% {
-    transform: translate(-15px, -30px) scale(0.97);
-  }
-  75% {
-    transform: translate(-25px, 15px) scale(1.01);
-  }
-}
-
-@keyframes float-medium {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(30px, -30px) rotate(3deg);
-  }
-  66% {
-    transform: translate(-20px, 20px) rotate(-3deg);
-  }
-}
-
-// CTA Section
+// ── CTA Section ───────────────────────────────────────────────────────────────
 .cta-section {
   padding: 3.5rem 0;
   background: linear-gradient(135deg, #19aae0 0%, #1590c0 100%);
@@ -968,10 +972,7 @@ const closeModal = () => {
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
   }
@@ -1004,6 +1005,7 @@ const closeModal = () => {
   color: rgba(255, 255, 255, 0.9);
   margin: 0 0 1.75rem 0;
 }
+
 .cta-button {
   display: inline-flex;
   align-items: center;
@@ -1018,68 +1020,88 @@ const closeModal = () => {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
     background: #f8fafc;
   }
+
   &:active {
     transform: translateY(-1px);
   }
+
   .cta-icon {
     font-size: 1.15rem;
     transition: transform 0.3s ease;
   }
+
   &:hover .cta-icon {
     transform: translateX(5px);
   }
 }
-// Mobile Responsive
+
+// ── Mobile Responsive ─────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .breadcrumb-section {
     height: 100px;
   }
+
   .container {
     padding: 0 1.5rem;
   }
+
   .team-section,
   .board-section {
-    padding: 2rem 0 2rem;
+    padding: 2rem 0;
   }
+
   .card-inner {
     padding: 1.75rem;
   }
+
   .image-circle {
     width: 160px;
     height: 160px;
   }
+
   .member-name {
     font-size: 1.35rem;
   }
+
   .member-bio {
     font-size: 0.9rem;
   }
+
   .modal-image {
     width: 100%;
     height: auto;
   }
+
   .modal-caption {
     font-size: 1.5rem;
   }
+
   .cta-section {
     padding: 3rem 0;
   }
+
   .board-divider {
-    max-width: 80px;
+    max-width: 60px;
   }
+
   .board-title {
     font-size: 1.2rem;
   }
-  .board-item {
-    padding: 0.85rem 1.25rem;
+
+  .simple-board-row {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .board-name {
-    font-size: 0.95rem;
+
+  .simple-board-card {
+    max-width: 100%;
+    flex: 1 1 auto;
   }
 }
 </style>

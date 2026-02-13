@@ -325,6 +325,7 @@
       <div class="footer-bottom">
         <p class="copyright">
           Copyright © {{ currentYear }} Lorena Foundation. All Rights Reserved.
+          Developed with love by +256 705 548961
         </p>
       </div>
     </footer>
