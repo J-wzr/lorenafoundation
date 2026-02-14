@@ -274,6 +274,7 @@ const boardMembersSimple = ref([
   { name: "Dorothy Nangobi" },
   { name: "Pastor Rogers Nuwahereza" },
   { name: "Reverend Hillary Amuki" },
+  { name: "Doreen Avako - Humanitarian Impact Manager" },
 ]);
 
 const openModal = (member) => {
