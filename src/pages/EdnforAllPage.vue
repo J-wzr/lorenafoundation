@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"Education for All"</strong>
                   </div>
                 </div>
               </div>
@@ -223,7 +223,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -269,9 +269,20 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "Education for All - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Lorena Foundation's Education for All campaign ensures every child has access to quality education and learning opportunities." },
-    ogTitle: { property: "og:title", content: "Education for All - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Ensuring every child has access to quality education and learning opportunities." },
+    description: {
+      name: "description",
+      content:
+        "Lorena Foundation's Education for All campaign ensures every child has access to quality education and learning opportunities.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "Education for All - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content:
+        "Ensuring every child has access to quality education and learning opportunities.",
+    },
   },
 });
 
@@ -1029,7 +1040,8 @@ onMounted(() => {
   .preview-image {
     width: 100%;
     height: 200px;
-    background: url("/our_values.jpg") center/cover;
+    background: url("/carpenter-cutting-mdf-board-inside-workshop-empowerment.jpg")
+      center/cover;
     background-color: #94a3b8;
   }
 

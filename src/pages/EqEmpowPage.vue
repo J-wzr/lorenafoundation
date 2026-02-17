@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"Equipment & Empowerement"</strong>
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -261,9 +261,19 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "Equality & Empowerment - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Lorena Foundation champions gender equality and community empowerment through advocacy, training and inclusive development." },
-    ogTitle: { property: "og:title", content: "Equality & Empowerment - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Championing gender equality and community empowerment." },
+    description: {
+      name: "description",
+      content:
+        "Lorena Foundation champions gender equality and community empowerment through advocacy, training and inclusive development.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "Equality & Empowerment - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content: "Championing gender equality and community empowerment.",
+    },
   },
 });
 

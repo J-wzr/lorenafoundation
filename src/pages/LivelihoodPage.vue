@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"Livelihood Program"</strong>
                   </div>
                 </div>
               </div>
@@ -173,7 +173,7 @@
                 <span class="quote-author"> Helen Keller</span>
               </p>
 
-              <p class="headline" style="text-align: justify">
+              <p class="headline" style="text-align: right">
                 <strong>Opportunity Shouldn’t Be a Privilege.</strong>
               </p>
 
@@ -223,7 +223,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -248,9 +248,7 @@
               <div class="preview-image"></div>
               <div class="preview-content">
                 <div class="preview-badge">Coming Next</div>
-                <h3 class="preview-title">
-                  WASH Program (Water, Sanitation & Health)
-                </h3>
+                <h3 class="preview-title">WASH (Water, Sanitation & Health)</h3>
                 <p class="preview-text">
                   Give Water. Give Life. Transform a Future.
                 </p>
@@ -271,9 +269,20 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "Livelihood & Economic Inclusion - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Lorena Foundation supports livelihood development and economic inclusion through skills training and entrepreneurship programs." },
-    ogTitle: { property: "og:title", content: "Livelihood & Economic Inclusion - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Supporting livelihood development and economic inclusion through skills training." },
+    description: {
+      name: "description",
+      content:
+        "Lorena Foundation supports livelihood development and economic inclusion through skills training and entrepreneurship programs.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "Livelihood & Economic Inclusion - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content:
+        "Supporting livelihood development and economic inclusion through skills training.",
+    },
   },
 });
 

@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"WASH Program"</strong>
                   </div>
                 </div>
               </div>
@@ -190,9 +190,9 @@
               <p style="text-align: justify">
                 At <strong class="brand">Lorena Foundation</strong>, we believe
                 no one should have to choose between thirst and sickness. We are
-                drilling boreholes (from $5,000), building family latrines, and
-                delivering hygiene education bringing safe water and sanitation
-                to communities that need it most.
+                drilling boreholes (from $5,000), building family latrines,
+                delivering hygiene education and bringing safe water and
+                sanitation to communities that need it most.
               </p>
 
               <div class="callout" style="text-align: justify">
@@ -214,7 +214,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -273,9 +273,20 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "WASH Campaign - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Support clean water, sanitation and hygiene initiatives empowering communities through the Lorena Foundation WASH campaign." },
-    ogTitle: { property: "og:title", content: "WASH Campaign - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Support clean water, sanitation and hygiene initiatives empowering communities." },
+    description: {
+      name: "description",
+      content:
+        "Support clean water, sanitation and hygiene initiatives empowering communities through the Lorena Foundation WASH campaign.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "WASH Campaign - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content:
+        "Support clean water, sanitation and hygiene initiatives empowering communities.",
+    },
   },
 });
 

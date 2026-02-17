@@ -49,12 +49,12 @@
 
             <p class="story-paragraph">
               The organization is named in honor of Lorena Darnell, a woman who
-              has lived a life marked by dignity, compassion, and love.
-              Throughout her life, she has faithfully cared for the needy and
-              supported countless individuals in discovering their purpose
-              through education. A devout believer in the Lord, Lorena has lit a
-              light that shines in dark places, one that continues to illuminate
-              the paths of many, long after the moment of encounter.
+              has lived a life marked by, compassion, and love. Throughout her
+              life, she has faithfully cared for the needy and supported
+              countless individuals in discovering their purpose through
+              education. A devout believer in the Lord, Lorena has lit a light
+              that shines in dark places, one that continues to illuminate the
+              paths of many, long after the moment of encounter.
             </p>
           </div>
         </div>
@@ -186,9 +186,19 @@ export default {
   meta: {
     title: "Our Story - Lorena Foundation",
     meta: {
-      description: { name: "description", content: "Learn about the story behind Lorena Foundation - our journey, impact and commitment to transforming lives in communities." },
-      ogTitle: { property: "og:title", content: "Our Story - Lorena Foundation" },
-      ogDescription: { property: "og:description", content: "The journey, impact and commitment behind Lorena Foundation." },
+      description: {
+        name: "description",
+        content:
+          "Learn about the story behind Lorena Foundation - our journey, impact and commitment to transforming lives in communities.",
+      },
+      ogTitle: {
+        property: "og:title",
+        content: "Our Story - Lorena Foundation",
+      },
+      ogDescription: {
+        property: "og:description",
+        content: "The journey, impact and commitment behind Lorena Foundation.",
+      },
     },
   },
 

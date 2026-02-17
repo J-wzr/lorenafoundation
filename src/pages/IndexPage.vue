@@ -18,9 +18,7 @@
                 gentleness, goodness, faith, meekness, temperance: against such
                 there is no law.
               </p>
-              <p
-                class="bible-reference text-subtitle1 text-weight-bold q-mb-xl"
-              >
+              <p class="bible-reference text-subtitle1 text-weight-bold">
                 Galatians 5:22-23 (KJV)
               </p>
 
@@ -31,7 +29,7 @@
               </h1>
 
               <a href="/campaigns" class="campaigns-link">
-                <span class="link-arrow">→</span> Explore Our Campaigns
+                <span class="link-arrow q-mb-md">→</span> Explore Our Campaigns
               </a>
             </div>
           </div>
@@ -291,9 +289,20 @@ export default {
   meta: {
     title: "Lorena Foundation - Together We Can Transform Lives",
     meta: {
-      description: { name: "description", content: "Lorena Foundation is a non-profit empowering communities through education, health, equality, and sustainable development in Uganda and beyond." },
-      ogTitle: { property: "og:title", content: "Lorena Foundation - Together We Can Transform Lives" },
-      ogDescription: { property: "og:description", content: "Empowering communities through education, health, equality, and sustainable development." },
+      description: {
+        name: "description",
+        content:
+          "Lorena Foundation is a non-profit empowering communities through education, health, equality, and sustainable development in Uganda and beyond.",
+      },
+      ogTitle: {
+        property: "og:title",
+        content: "Lorena Foundation - Together We Can Transform Lives",
+      },
+      ogDescription: {
+        property: "og:description",
+        content:
+          "Empowering communities through education, health, equality, and sustainable development.",
+      },
     },
   },
 
@@ -435,8 +444,10 @@ export default {
 
 .text-column {
   display: flex;
-  align-items: center;
-  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh !important;
+  min-height: 90vh;
   padding: 0;
   background-image: url("/big_bg_home.png");
 }
@@ -453,22 +464,24 @@ export default {
 }
 
 .hero-text {
-  padding: 20px 60px 20px 40px;
+  padding: 80px 60px 80px 40px; /* change from 20px top/bottom to 80px */
   color: #2c3e50;
   width: 100%;
 }
 
 .quote-mark {
   color: #1976d2;
-  line-height: 0.8;
+  line-height: 0.2;
   font-weight: 700;
+  margin-top: 30px;
 }
 
 .bible-verse {
   font-style: italic;
-  line-height: 1.8;
+  line-height: 1.6;
   color: #34495e;
   font-size: 1rem;
+  margin-bottom: 2px;
 }
 
 .bible-reference {
@@ -484,6 +497,8 @@ export default {
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
+  margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .typed-text {

@@ -218,7 +218,7 @@ const leadershipTeam = ref([
   {
     name: "Barbra Ekusia",
     role: "Team Leader",
-    image: "/barbra.jpg",
+    image: "/Barbra.jpg",
     phone: "0788489974",
     email: "mail",
     detailedBio:
@@ -227,7 +227,7 @@ const leadershipTeam = ref([
   {
     name: "Patricia Kokora",
     role: "Program Officer",
-    image: "/patricia.jpg",
+    image: "/Patricia.jpg",
     phone: "0775502323",
     email: "mail",
     detailedBio:
@@ -236,7 +236,7 @@ const leadershipTeam = ref([
   {
     name: "Maurine Maturu",
     role: "Operations & People Officer",
-    image: "/maurine.jpg",
+    image: "/Maurine.jpg",
     phone: "07",
     email: "mail",
     detailedBio:
@@ -245,7 +245,7 @@ const leadershipTeam = ref([
   {
     name: "Amos Edoza",
     role: "Volunteer Officer",
-    image: "/amos.jpg",
+    image: "/Amos.jpg",
     phone: "0787359197",
     email: "mail",
     detailedBio:
@@ -271,9 +271,7 @@ const boardMembersWithImages = ref([
 
 // Board members without photos — rendered as compact flex pills
 const boardMembersSimple = ref([
-  { name: "Dorothy Nangobi" },
   { name: "Pastor Rogers Nuwahereza" },
-  { name: "Reverend Hillary Amuki" },
   { name: "Doreen Avako - Humanitarian Impact Manager" },
 ]);
 

@@ -162,14 +162,9 @@
               <div class="office-content">
                 <h3 class="office-name">Arua, Uganda</h3>
                 <p class="office-description">
-                  Located in the heart of West Nile, our Arua office serves as
-                  the regional hub for communities across northwestern Uganda.
-                  From here, Lorena Foundation coordinates safe water projects,
-                  sanitation programs, and livelihood initiatives that directly
-                  reach rural and hard-to-access areas. The Arua office also
-                  works closely with local leaders, grassroots organizations,
-                  and development partners to strengthen health systems and
-                  promote inclusive socio-economic growth.
+                  Located in Arua in North Western Uganda, our regional office
+                  connects communities, partners, and local leadership to
+                  transform lives across West Nile and beyond.
                 </p>
               </div>
 
@@ -218,9 +213,20 @@ export default {
     useMeta({
       title: "Contact Us - Lorena Foundation",
       meta: {
-        description: { name: "description", content: "Get in touch with Lorena Foundation. Reach out for partnerships, donations, volunteering or any inquiries about our programs." },
-        ogTitle: { property: "og:title", content: "Contact Us - Lorena Foundation" },
-        ogDescription: { property: "og:description", content: "Get in touch with Lorena Foundation for partnerships, donations or inquiries." },
+        description: {
+          name: "description",
+          content:
+            "Get in touch with Lorena Foundation. Reach out for partnerships, donations, volunteering or any inquiries about our programs.",
+        },
+        ogTitle: {
+          property: "og:title",
+          content: "Contact Us - Lorena Foundation",
+        },
+        ogDescription: {
+          property: "og:description",
+          content:
+            "Get in touch with Lorena Foundation for partnerships, donations or inquiries.",
+        },
       },
     });
 

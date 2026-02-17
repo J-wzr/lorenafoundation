@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"Green Transformation Program"</strong>
                   </div>
                 </div>
               </div>
@@ -217,7 +217,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -263,9 +263,20 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "Green Transformation - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Lorena Foundation's Green Transformation campaign promotes environmental sustainability and climate action in communities." },
-    ogTitle: { property: "og:title", content: "Green Transformation - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Promoting environmental sustainability and climate action in communities." },
+    description: {
+      name: "description",
+      content:
+        "Lorena Foundation's Green Transformation campaign promotes environmental sustainability and climate action in communities.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "Green Transformation - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content:
+        "Promoting environmental sustainability and climate action in communities.",
+    },
   },
 });
 

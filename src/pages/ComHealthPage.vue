@@ -40,7 +40,7 @@
                 <div class="step-content-h">
                   <div class="step-title-h">Enter Details</div>
                   <div class="step-desc-h">
-                    Write <strong>"WASH Campaign"</strong>
+                    Write <strong>"Community Health Program"</strong>
                   </div>
                 </div>
               </div>
@@ -218,7 +218,7 @@
         <!-- Next Campaign Section - Always shows -->
         <div class="next-campaign-section">
           <div class="next-campaign-left">
-            <h2 class="next-title">Explore More Campaigns</h2>
+            <h2 class="next-title">Explore More Programs</h2>
             <p class="next-desc">
               Discover other ways you can make a difference in communities
               across the region.
@@ -265,9 +265,20 @@ import { useCampaigns } from "src/composables/useCampaigns";
 useMeta({
   title: "Community Health - Lorena Foundation",
   meta: {
-    description: { name: "description", content: "Lorena Foundation's Community Health campaign promotes accessible healthcare and wellness for underserved communities." },
-    ogTitle: { property: "og:title", content: "Community Health - Lorena Foundation" },
-    ogDescription: { property: "og:description", content: "Promoting accessible healthcare and wellness for underserved communities." },
+    description: {
+      name: "description",
+      content:
+        "Lorena Foundation's Community Health campaign promotes accessible healthcare and wellness for underserved communities.",
+    },
+    ogTitle: {
+      property: "og:title",
+      content: "Community Health - Lorena Foundation",
+    },
+    ogDescription: {
+      property: "og:description",
+      content:
+        "Promoting accessible healthcare and wellness for underserved communities.",
+    },
   },
 });
 
