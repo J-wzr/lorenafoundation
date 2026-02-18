@@ -321,7 +321,7 @@ export default {
           description: "Give Water. Give Life. Transform a Future.",
         },
         {
-          src: "/doctor_patient.jp",
+          src: "/doctor_patient.jpg",
           caption: "Community Health",
           description: "Health is Not a Privilege. It's a Human Right.",
         },
