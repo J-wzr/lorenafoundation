@@ -4,7 +4,7 @@
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
-      <div class="positioned-badge">ACTIVE CAMPAIGN</div>
+      <div class="positioned-badge">ACTIVE PROGRAM</div>
       <div class="positioned-titles">
         <p class="positioned-subtitle">WASH (Water, Sanitation and Hygiene)</p>
       </div>

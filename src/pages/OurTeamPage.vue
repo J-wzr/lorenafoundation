@@ -267,12 +267,18 @@ const boardMembersWithImages = ref([
     profession: "Engineering Professional and Academic",
     image: "/Norman.png",
   },
-]);
-
-// Board members without photos — rendered as compact flex pills
-const boardMembersSimple = ref([
-  { name: "Pastor Rogers Nuwahereza" },
-  { name: "Doreen Avako - Humanitarian Impact Manager" },
+  {
+    name: "Lorena Darnell",
+    role: "Board Member",
+    profession: "Missionary and Medical Practitioner",
+    image: "/Darnell.png",
+  },
+  {
+    name: "Doreen Avako",
+    role: "Board Member",
+    profession: "Humanitarian Impact Manager",
+    image: "#",
+  },
 ]);
 
 const openModal = (member) => {
@@ -716,71 +722,6 @@ const closeModal = () => {
   text-align: center;
   white-space: nowrap;
   font-size: 1.35rem;
-}
-
-// ── Simple flex cards (Dorothy, Pastor Rogers, Rev. Hillary) ──────────────────
-.simple-board-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: space-between;
-  position: relative;
-  z-index: 1;
-}
-
-.simple-board-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 1rem 1.6rem;
-  animation: fadeInScale 0.8s ease-out backwards;
-  transition: all 0.3s ease;
-  flex: 1 1 200px;
-  max-width: 310px;
-}
-
-.simple-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(74, 144, 226, 0.08);
-  border: 2px solid rgba(74, 144, 226, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-
-  .avatar-icon {
-    font-size: 1.4rem;
-    color: #4a90e2;
-    transition: color 0.3s ease;
-  }
-}
-
-.simple-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.simple-name {
-  font-size: 0.97rem;
-  font-weight: 600;
-  color: #1e293b;
-  transition: color 0.3s ease;
-  line-height: 1.3;
-}
-
-.simple-role {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #4a90e2;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 // ── Background Circles ────────────────────────────────────────────────────────

@@ -4,7 +4,7 @@
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
-      <div class="positioned-badge">ACTIVE CAMPAIGN</div>
+      <div class="positioned-badge">ACTIVE PROGRAM</div>
       <div class="positioned-titles">
         <p class="positioned-subtitle">Green Transformation</p>
       </div>
@@ -1035,7 +1035,8 @@ onMounted(() => {
   .preview-image {
     width: 100%;
     height: 200px;
-    background: url("/livelihood.jpg") center/cover;
+    background: url("/medium-shot-smiley-elderly-woman-outside-mission.jpg")
+      center/cover;
     background-color: #94a3b8;
   }
 

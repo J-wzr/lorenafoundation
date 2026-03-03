@@ -4,7 +4,7 @@
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
-      <div class="positioned-badge">ACTIVE CAMPAIGN</div>
+      <div class="positioned-badge">ACTIVE PROGRAM</div>
       <div class="positioned-titles">
         <p class="positioned-subtitle">Livelihood & Economic Inclusion</p>
       </div>
@@ -319,7 +319,7 @@ onMounted(() => {
 // Hero - Background stays behind
 .hero {
   position: relative;
-  height: 50vh;
+  height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,7 +332,8 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/water.jpg") center/cover;
+  background: url("/medium-shot-smiley-elderly-woman-outside-mission.jpg")
+    center/cover;
   background-attachment: fixed;
   z-index: 1;
 }
