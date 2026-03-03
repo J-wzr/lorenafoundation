@@ -14,12 +14,12 @@
               <!-- Bible Verse Quote -->
               <div class="quote-mark text-h2 q-mb-sm">"</div>
               <p class="bible-verse text-body1 q-mb-md">
-                But the fruit of the spirit is love, joy, peace, long suffering,
-                gentleness, goodness, faith, meekness, temperance: against such
-                there is no law.
+                And be not conformed to this world: but be ye transformed by the
+                renewing of your mind, that ye may prove what is that good, and
+                acceptable, and perfect, will of God.
               </p>
               <p class="bible-reference text-subtitle1 text-weight-bold">
-                Galatians 5:22-23 (KJV)
+                Romans 12:2 KJV
               </p>
 
               <!-- Typing Effect Title -->
@@ -317,7 +317,7 @@ export default {
       images: [
         {
           src: "/water.jpg",
-          caption: "WASH (Water, Sanitation & Health)",
+          caption: "WASH (Water, Sanitation & Hygiene)",
           description: "Give Water. Give Life. Transform a Future.",
         },
         {

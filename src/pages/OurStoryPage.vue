@@ -66,14 +66,64 @@
       <div class="container">
         <div class="board-header">
           <div class="board-divider"></div>
-          <h2 class="section-title board-title">How We Serve</h2>
+          <h2
+            class="section-title board-title"
+            style="margin-bottom: 0; padding-bottom: 0"
+          >
+            How We Serve
+          </h2>
           <div class="board-divider"></div>
         </div>
-        <p class="about-description">
-          At Lorena Foundation, we serve by implementing practical, long-term
-          solutions that address the most pressing needs of communities. Our
-          work is designed to uplift individuals, strengthen families, and
-          create thriving, resilient communities.
+        <p class="about-description" style="margin-top: 0; padding-top: 0">
+          <span class="text-primary" style="margin-top: 0; padding-top: 0"
+            >Every day, across the world, countless people live in precarity.
+          </span>
+          Those on the margins of society are disproportionately affected,
+          bearing the greatest burden of poverty, injustice, and limited
+          opportunity.
+        </p>
+        <p class="about-description" style="margin-top: 15px">
+          At <b>Lorena Foundation</b>, we believe transformation is possible,
+          because
+          <span class="text-primary"
+            >God is still at work in the lives of His people.</span
+          >Through His grace, lives can be restored, renewed, and changed.
+        </p>
+        <p class="about-description" style="margin-top: 15px">
+          <b style="margin-bottom: 0; padding-bottom: 0">Our Approach</b><br />
+          <b class="text-primary" style="margin-top: 0; padding-top: 0"
+            >God-inspired, practical solutions</b
+          ><br />
+          We implement long-term, community-centered solutions that address the
+          most urgent needs, uplifting individuals, strengthening families, and
+          building resilient communities.
+        </p>
+        <p class="about-description" style="margin-top: 15px">
+          <b class="text-primary" style="margin-top: 0; padding-top: 0"
+            >Community-led transformation </b
+          ><br />
+          The people we serve are active partners in transformation. Local
+          leadership guides our work, ensuring ownership, dignity, and
+          sustainability.
+        </p>
+        <p class="about-description" style="margin-top: 15px">
+          <b class="text-primary" style="margin-top: 0; padding-top: 0"
+            >Meaningful partnerships </b
+          ><br />
+          We collaborate with like-minded individuals, organizations, and
+          institutions, working together to honour God’s purpose and maximize
+          lasting impact.
+        </p>
+        <p class="about-description" style="margin-top: 15px">
+          <b class="text-primary" style="margin-top: 0; padding-top: 0"
+            >Our Commitment </b
+          ><br />
+          We stand in solidarity with communities and partners to transform
+          lives,
+          <span class="text-primary"
+            >demonstrating God’s love through practical action, compassion,
+            accountability, and impact that transcends generations.</span
+          >
         </p>
       </div>
     </section>
@@ -164,8 +214,8 @@
           <div class="cta-text">
             <h2 class="cta-title">Ready to transform a life?</h2>
             <p class="cta-description">
-              Every 10$ – $50 can end poverty or change a life of the
-              unfortunate kids, poor single mothers and more
+              Every Donation you make can end poverty or transform the life of
+              people
             </p>
             <button class="cta-button">
               Donate
@@ -232,9 +282,9 @@ export default {
       }
     },
     animateCounters() {
-      this.animateValue("animatedPeople", 0, 5000, 400);
-      this.animateValue("animatedDistricts", 0, 4, 1500);
-      this.animateValue("animatedHouseholds", 0, 1000, 1000);
+      this.animateValue("animatedPeople", 0, 5264, 400);
+      this.animateValue("animatedDistricts", 0, 5, 1500);
+      this.animateValue("animatedHouseholds", 0, 1053, 1000);
     },
     animateValue(key, start, end, duration) {
       const startTime = performance.now();
@@ -465,7 +515,7 @@ export default {
 }
 
 .about-description {
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
   line-height: 1.8;
   margin: 0 auto;

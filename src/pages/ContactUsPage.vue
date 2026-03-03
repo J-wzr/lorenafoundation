@@ -164,7 +164,7 @@
                 <p class="office-description">
                   Located in Arua in North Western Uganda, our regional office
                   connects communities, partners, and local leadership to
-                  transform lives across West Nile and beyond.
+                  transform lives across Nothern Uganda and beyond.
                 </p>
               </div>
 

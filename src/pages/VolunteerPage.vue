@@ -18,7 +18,7 @@
     <!-- Why Volunteer Section -->
     <section class="volunteer-section">
       <div class="container">
-        <h2 class="volunteer-title">Why Volunteer with Us</h2>
+        <h2 class="volunteer-title">Why you want to Volunteer with Us?</h2>
 
         <div class="volunteer-cards">
           <div class="volunteer-card">
@@ -51,8 +51,9 @@
             <h3 class="volunteer-card-title">Develop Skills and Knowledge</h3>
             <p class="volunteer-card-description">
               Volunteering with us gives you hands-on experience in community
-              development, project management, and sustainable practices. You'll
-              gain valuable skills while contributing to meaningful initiatives.
+              development, project management, and sustainable practices. You
+              will gain valuable skills while contributing to meaningful
+              initiatives.
             </p>
           </div>
 
@@ -285,9 +286,19 @@ export default {
     useMeta({
       title: "Volunteer - Lorena Foundation",
       meta: {
-        description: { name: "description", content: "Join Lorena Foundation as a volunteer and help transform lives through education, health and community empowerment programs." },
-        ogTitle: { property: "og:title", content: "Volunteer - Lorena Foundation" },
-        ogDescription: { property: "og:description", content: "Join us as a volunteer and help transform lives." },
+        description: {
+          name: "description",
+          content:
+            "Join Lorena Foundation as a volunteer and help transform lives through education, health and community empowerment programs.",
+        },
+        ogTitle: {
+          property: "og:title",
+          content: "Volunteer - Lorena Foundation",
+        },
+        ogDescription: {
+          property: "og:description",
+          content: "Join us as a volunteer and help transform lives.",
+        },
       },
     });
 
@@ -608,7 +619,7 @@ export default {
 }
 
 .volunteer-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   color: #19aae0;
@@ -689,6 +700,7 @@ export default {
   color: #475569;
   margin: 0;
   font-weight: 400;
+  text-align: justify;
 }
 
 .form-section {

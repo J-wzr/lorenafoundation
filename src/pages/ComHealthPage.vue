@@ -224,7 +224,7 @@
               across the region.
             </p>
             <q-btn
-              label="Next Campaign"
+              label="Next Program"
               size="lg"
               color="primary"
               unelevated

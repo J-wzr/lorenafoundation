@@ -20,8 +20,7 @@
       <div class="blog-container">
         <!-- Campaign Number + Title Inline -->
         <div class="campaign-header">
-          <span class="campaign-number">1</span>
-          <h2 class="campaign-title">PARADOSI</h2>
+          <img src="/paradosi/paradosi-icon.jpg" alt="" />
         </div>
 
         <div class="title-divider"></div>
@@ -103,19 +102,27 @@
             <div class="flipbook-fold"></div>
 
             <!-- Nav arrows -->
-            <button
-              class="flip-arrow flip-arrow-left"
-              @click="flipPrev"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="flip-arrow flip-arrow-left" @click="flipPrev">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
-            <button
-              class="flip-arrow flip-arrow-right"
-              @click="flipNext"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="flip-arrow flip-arrow-right" @click="flipNext">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <polyline points="9 6 15 12 9 18" />
               </svg>
             </button>
@@ -164,9 +171,20 @@ export default {
   meta: {
     title: "Our Campaigns - Lorena Foundation",
     meta: {
-      description: { name: "description", content: "Explore Lorena Foundation's campaigns including PARADOSI, WASH, Education, Health and more - making a lasting impact in communities." },
-      ogTitle: { property: "og:title", content: "Our Campaigns - Lorena Foundation" },
-      ogDescription: { property: "og:description", content: "Explore our campaigns making a lasting impact in communities." },
+      description: {
+        name: "description",
+        content:
+          "Explore Lorena Foundation's campaigns including PARADOSI, WASH, Education, Health and more - making a lasting impact in communities.",
+      },
+      ogTitle: {
+        property: "og:title",
+        content: "Our Campaigns - Lorena Foundation",
+      },
+      ogDescription: {
+        property: "og:description",
+        content:
+          "Explore our campaigns making a lasting impact in communities.",
+      },
     },
   },
 
@@ -350,22 +368,10 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 10px;
 }
 
-.campaign-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #138ab7, #19aae0);
-  color: white;
-  font-size: 17px;
-  font-weight: 700;
-  box-shadow: 0 3px 10px rgba(19, 138, 183, 0.3);
-  flex-shrink: 0;
+.campaign-header img {
+  height: 100px;
 }
 
 .campaign-title {
@@ -689,12 +695,6 @@ export default {
   .campaign-title {
     font-size: 1.1rem;
     letter-spacing: 1px;
-  }
-
-  .campaign-number {
-    width: 32px;
-    height: 32px;
-    font-size: 15px;
   }
 
   .flipbook-img {

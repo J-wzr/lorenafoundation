@@ -6,7 +6,7 @@
       <div class="hero-overlay"></div>
       <div class="positioned-badge">ACTIVE CAMPAIGN</div>
       <div class="positioned-titles">
-        <p class="positioned-subtitle">WASH (Water, Sanitation and Health)</p>
+        <p class="positioned-subtitle">WASH (Water, Sanitation and Hygiene)</p>
       </div>
     </section>
 
@@ -232,7 +232,7 @@
             </p>
 
             <q-btn
-              label="Next Campaign"
+              label="Next Program"
               size="lg"
               color="primary"
               unelevated

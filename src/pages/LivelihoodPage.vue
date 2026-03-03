@@ -229,7 +229,7 @@
               across the region.
             </p>
             <q-btn
-              label="Next Campaign"
+              label="Next Program"
               size="lg"
               color="primary"
               unelevated
@@ -248,7 +248,9 @@
               <div class="preview-image"></div>
               <div class="preview-content">
                 <div class="preview-badge">Coming Next</div>
-                <h3 class="preview-title">WASH (Water, Sanitation & Health)</h3>
+                <h3 class="preview-title">
+                  WASH (Water, Sanitation & Hygiene)
+                </h3>
                 <p class="preview-text">
                   Give Water. Give Life. Transform a Future.
                 </p>
