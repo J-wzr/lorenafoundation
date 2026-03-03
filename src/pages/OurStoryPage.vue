@@ -66,12 +66,7 @@
       <div class="container">
         <div class="board-header">
           <div class="board-divider"></div>
-          <h2
-            class="section-title board-title"
-            style="margin-bottom: 0; padding-bottom: 0"
-          >
-            How We Serve
-          </h2>
+          <h2 class="section-title board-title">How We Serve</h2>
           <div class="board-divider"></div>
         </div>
         <p class="about-description" style="margin-top: 0; padding-top: 0">
